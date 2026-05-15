@@ -1,327 +1,320 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>quick-deck — Style Gallery</title>
-<link rel="stylesheet" href="style.css">
-<style>
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-  gap: 28px;
-  margin-top: 24px;
-}
-.style-card {
-  border: 1px solid rgba(0,255,102,0.3);
-  overflow: hidden;
-  background: rgba(0,0,0,0.4);
-  display: flex;
-  flex-direction: column;
-  transition: border-color 0.15s, box-shadow 0.15s;
-  cursor: pointer;
-}
-.style-card:hover {
-  border-color: #c9a14a;
-  box-shadow: 0 0 20px rgba(201,161,74,0.2);
-}
-.style-thumb {
-  width: 100%;
-  display: block;
-  aspect-ratio: 16/9;
-}
-.style-info {
-  padding: 16px;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.style-name {
-  font-family: 'Press Start 2P', monospace;
-  font-size: 8px;
-  letter-spacing: 2px;
-  color: #c9a14a;
-}
-.style-desc { font-size: 18px; color: #aaffcc; line-height: 1.4; }
-.style-copy-btn {
-  margin-top: 12px;
-  font-family: 'Press Start 2P', monospace;
-  font-size: 7px;
-  letter-spacing: 1px;
-  background: rgba(0,255,102,0.1);
-  border: 1px solid #00ff66;
-  color: #00ff66;
-  padding: 10px 14px;
-  cursor: pointer;
-  width: 100%;
-  text-align: center;
-  transition: background 0.15s;
-}
-.style-copy-btn:hover { background: rgba(0,255,102,0.25); }
-.style-copy-btn.copied { color: #c9a14a; border-color: #c9a14a; }
-.instruction-banner {
-  border: 1px dashed rgba(0,255,102,0.4);
-  padding: 20px 24px;
-  margin-bottom: 32px;
-  font-size: 20px;
-  color: #aaffcc;
-  line-height: 1.55;
-  background: rgba(0,255,102,0.02);
-}
-.instruction-banner strong { color: #c9a14a; }
-.back-link {
-  display: inline-block;
-  font-family: 'Press Start 2P', monospace;
-  font-size: 8px;
-  color: #447755;
-  text-decoration: none;
-  letter-spacing: 2px;
-  margin-bottom: 32px;
-}
-.back-link:hover { color: #00ff66; }
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>quick-deck — Style Gallery</title>
+  <meta name="description" content="10 prebuilt presentation styles for quick-deck. Click any card to copy a prompt snippet — paste it into Claude when it asks about style.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="page">
 
-  <header class="site-header">
-    <div class="site-title">★ QUICK-DECK ★<br>STYLE GALLERY</div>
-    <p class="site-sub">10 prebuilt presentation themes.<br>Click a style to copy the prompt — paste it into Claude when it asks about style.</p>
-  </header>
+<a class="skip-link" href="#main">Skip to content</a>
 
-  <a class="back-link" href="index.html">← BACK TO SETUP</a>
-
-  <div class="instruction-banner">
-    <strong>How to use this gallery:</strong><br>
-    Click <strong>[COPY PROMPT]</strong> on any style below → switch back to your Claude conversation → paste the copied text as your answer to <strong>Q2 (Style)</strong>.
+<!-- ── Mini nav ──────────────────────────────────────────────────── -->
+<nav class="mini-nav" aria-label="Site navigation">
+  <div class="mini-nav-inner">
+    <a class="mini-nav-back" href="index.html">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+      Back to setup
+    </a>
+    <span class="nav-wordmark">quick-deck</span>
   </div>
+</nav>
 
-  <div class="gallery-grid">
-
-    <!-- 1. EDITORIAL DARK -->
-    <div class="style-card">
-      <svg class="style-thumb" viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
-        <rect width="320" height="180" fill="#111111"/>
-        <rect x="40" y="52" width="28" height="3" fill="#c9a14a"/>
-        <text x="40" y="80" font-family="Georgia,serif" font-size="22" fill="#f5f0e8" font-weight="bold">Editorial Dark</text>
-        <text x="40" y="100" font-family="Arial,sans-serif" font-size="11" fill="#c8c4bc">Magazine editorial feel</text>
-        <rect x="40" y="115" width="180" height="1.5" fill="#c9a14a" opacity="0.4"/>
-        <text x="40" y="130" font-family="Arial,sans-serif" font-size="10" fill="#c8c4bc" opacity="0.8">— Strong typographic hierarchy</text>
-        <text x="40" y="145" font-family="Arial,sans-serif" font-size="10" fill="#c8c4bc" opacity="0.8">— Generous whitespace</text>
-        <rect x="250" y="40" width="30" height="100" fill="#c9a14a" opacity="0.08"/>
-      </svg>
-      <div class="style-info">
-        <div class="style-name">EDITORIAL DARK</div>
-        <div class="style-desc">Deep charcoal + Playfair Display + gold accent. Magazine editorial feel with dramatic typographic hierarchy.</div>
-        <button class="style-copy-btn" onclick="copyStyle(this, 'Use the &quot;Editorial Dark&quot; style: deep charcoal (#111111) background, Playfair Display headings (cream #f5f0e8), Inter body text (warm gray #c8c4bc), gold accent (#c9a14a). Magazine editorial feel, generous whitespace, strong typographic hierarchy.')">COPY PROMPT</button>
-      </div>
-    </div>
-
-    <!-- 2. CLEAN CORPORATE -->
-    <div class="style-card">
-      <svg class="style-thumb" viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
-        <rect width="320" height="180" fill="#ffffff"/>
-        <rect x="0" y="0" width="320" height="6" fill="#2563eb"/>
-        <rect x="40" y="35" width="24" height="3" fill="#2563eb"/>
-        <text x="40" y="70" font-family="Arial,sans-serif" font-size="20" fill="#1a2b4a" font-weight="bold">Clean Corporate</text>
-        <text x="40" y="90" font-family="Arial,sans-serif" font-size="11" fill="#4a5568">Professional business presentation</text>
-        <line x1="40" y1="105" x2="240" y2="105" stroke="#e2e8f0" stroke-width="1.5"/>
-        <text x="40" y="122" font-family="Arial,sans-serif" font-size="10" fill="#4a5568">• Clear structure and data-forward</text>
-        <text x="40" y="138" font-family="Arial,sans-serif" font-size="10" fill="#4a5568">• Works for board decks and reports</text>
-        <rect x="270" y="30" width="20" height="120" fill="#2563eb" opacity="0.06"/>
-      </svg>
-      <div class="style-info">
-        <div class="style-name">CLEAN CORPORATE</div>
-        <div class="style-desc">White + navy + IBM Plex Sans + blue accent. Trusted, professional — built for board decks and client reports.</div>
-        <button class="style-copy-btn" onclick="copyStyle(this, 'Use the &quot;Clean Corporate&quot; style: white (#ffffff) background, IBM Plex Sans headings (dark navy #1a2b4a), body text slate gray (#4a5568), blue accent (#2563eb). Professional business feel, clean lines, data-forward layout.')">COPY PROMPT</button>
-      </div>
-    </div>
-
-    <!-- 3. PLAYFUL STARTUP -->
-    <div class="style-card">
-      <svg class="style-thumb" viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
-        <rect width="320" height="180" fill="#0f0e17"/>
-        <circle cx="270" cy="40" r="50" fill="#ff8906" opacity="0.12"/>
-        <text x="40" y="72" font-family="Arial,sans-serif" font-size="22" fill="#fffffe" font-weight="bold">Playful Startup</text>
-        <text x="40" y="92" font-family="Arial,sans-serif" font-size="11" fill="#a7a9be">Bold and energetic tech feel</text>
-        <rect x="40" y="110" width="60" height="3" fill="#ff8906"/>
-        <text x="40" y="130" font-family="Arial,sans-serif" font-size="10" fill="#a7a9be" opacity="0.9">— Modern. Direct. Confident.</text>
-        <text x="40" y="148" font-family="Arial,sans-serif" font-size="10" fill="#a7a9be" opacity="0.9">— Ideal for demos and pitches</text>
-      </svg>
-      <div class="style-info">
-        <div class="style-name">PLAYFUL STARTUP</div>
-        <div class="style-desc">Near-black + Space Grotesk + orange accent. Bold, energetic — ideal for product demos and investor pitches.</div>
-        <button class="style-copy-btn" onclick="copyStyle(this, 'Use the &quot;Playful Startup&quot; style: near-black (#0f0e17) background, Space Grotesk headings (off-white #fffffe), body text muted blue-gray (#a7a9be), orange accent (#ff8906). Bold and energetic tech feel, confident layouts, ideal for demos and pitches.')">COPY PROMPT</button>
-      </div>
-    </div>
-
-    <!-- 4. LUXURY MINIMAL -->
-    <div class="style-card">
-      <svg class="style-thumb" viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
-        <rect width="320" height="180" fill="#f5f0e6"/>
-        <rect x="40" y="58" width="200" height="0.8" fill="#8b7355" opacity="0.5"/>
-        <text x="40" y="86" font-family="Georgia,serif" font-size="20" fill="#1a1a1a" font-style="italic">Luxury Minimal</text>
-        <rect x="40" y="96" width="200" height="0.8" fill="#8b7355" opacity="0.5"/>
-        <text x="40" y="114" font-family="Arial,sans-serif" font-size="10" fill="#3d3d3d" letter-spacing="3">REFINED · ELEVATED · RESTRAINED</text>
-        <rect x="255" y="60" width="1.5" height="60" fill="#8b7355" opacity="0.4"/>
-        <text x="263" y="80" font-family="Georgia,serif" font-size="9" fill="#8b7355" font-style="italic">01</text>
-      </svg>
-      <div class="style-info">
-        <div class="style-name">LUXURY MINIMAL</div>
-        <div class="style-desc">Cream + Cormorant Garamond + warm gold. Refined and restrained — high-end brands, luxury products, premium services.</div>
-        <button class="style-copy-btn" onclick="copyStyle(this, 'Use the &quot;Luxury Minimal&quot; style: warm cream (#f5f0e6) background, Cormorant Garamond headings (near-black #1a1a1a), Montserrat body text (charcoal #3d3d3d), warm taupe accent (#8b7355). Refined, restrained, elevated — ideal for luxury brands and premium services.')">COPY PROMPT</button>
-      </div>
-    </div>
-
-    <!-- 5. BOLD MONO -->
-    <div class="style-card">
-      <svg class="style-thumb" viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
-        <rect width="320" height="180" fill="#000000"/>
-        <rect x="40" y="40" width="240" height="2" fill="#39ff14"/>
-        <text x="40" y="78" font-family="Courier New,monospace" font-size="26" fill="#ffffff" font-weight="bold">BOLD_MONO</text>
-        <text x="40" y="98" font-family="Courier New,monospace" font-size="10" fill="#e0e0e0">// brutalist.tech.aesthetic()</text>
-        <rect x="40" y="140" width="240" height="2" fill="#39ff14"/>
-        <text x="40" y="162" font-family="Courier New,monospace" font-size="9" fill="#39ff14">STATUS: ACTIVE █</text>
-      </svg>
-      <div class="style-info">
-        <div class="style-name">BOLD MONO</div>
-        <div class="style-desc">Pure black + Courier Prime + neon green accent. Brutalist tech aesthetic — dev tools, code demos, technical deep-dives.</div>
-        <button class="style-copy-btn" onclick="copyStyle(this, 'Use the &quot;Bold Mono&quot; style: pure black (#000000) background, Courier Prime headings (white #ffffff), body text light gray (#e0e0e0), neon green accent (#39ff14). Brutalist monospace aesthetic, minimal decoration, high contrast. Ideal for technical and developer-focused presentations.')">COPY PROMPT</button>
-      </div>
-    </div>
-
-    <!-- 6. SOFT PASTEL -->
-    <div class="style-card">
-      <svg class="style-thumb" viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
-        <rect width="320" height="180" fill="#f8f6ff"/>
-        <circle cx="260" cy="30" r="60" fill="#8b80c4" opacity="0.12"/>
-        <circle cx="60" cy="160" r="40" fill="#8b80c4" opacity="0.08"/>
-        <rect x="40" y="54" width="20" height="3" fill="#8b80c4" rx="2"/>
-        <text x="40" y="82" font-family="Arial,sans-serif" font-size="19" fill="#2d2b55" font-weight="600">Soft Pastel</text>
-        <text x="40" y="102" font-family="Arial,sans-serif" font-size="11" fill="#4a4870">Approachable and friendly</text>
-        <text x="40" y="124" font-family="Arial,sans-serif" font-size="10" fill="#4a4870" opacity="0.85">— Perfect for workshops</text>
-        <text x="40" y="140" font-family="Arial,sans-serif" font-size="10" fill="#4a4870" opacity="0.85">— Education and training decks</text>
-      </svg>
-      <div class="style-info">
-        <div class="style-name">SOFT PASTEL</div>
-        <div class="style-desc">Lavender + Nunito + purple accent. Warm and approachable — workshops, education, onboarding, community presentations.</div>
-        <button class="style-copy-btn" onclick="copyStyle(this, 'Use the &quot;Soft Pastel&quot; style: soft lavender-white (#f8f6ff) background, Nunito headings (deep purple #2d2b55), DM Sans body text (medium purple #4a4870), muted purple accent (#8b80c4). Approachable, friendly, warm — ideal for workshops, education, and training decks.')">COPY PROMPT</button>
-      </div>
-    </div>
-
-    <!-- 7. ARCHITECTURE -->
-    <div class="style-card">
-      <svg class="style-thumb" viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
-        <rect width="320" height="180" fill="#1c2128"/>
-        <rect x="0" y="0" width="6" height="180" fill="#d4a853" opacity="0.6"/>
-        <text x="28" y="50" font-family="Arial,sans-serif" font-size="9" fill="#d4a853" letter-spacing="5" text-transform="uppercase">PORTFOLIO</text>
-        <text x="28" y="82" font-family="Arial,sans-serif" font-size="22" fill="#e8e3d8" font-weight="300" letter-spacing="2">Architecture</text>
-        <text x="28" y="102" font-family="Arial,sans-serif" font-size="10" fill="#b0aa9e" letter-spacing="1">Studio — 2026</text>
-        <rect x="28" y="118" width="140" height="0.8" fill="#d4a853" opacity="0.5"/>
-        <rect x="220" y="40" width="80" height="100" fill="#d4a853" opacity="0.05"/>
-      </svg>
-      <div class="style-info">
-        <div class="style-name">ARCHITECTURE</div>
-        <div class="style-desc">Dark slate + Josefin Sans + warm gold. Sophisticated portfolio feel — creative agencies, design studios, property and architecture.</div>
-        <button class="style-copy-btn" onclick="copyStyle(this, 'Use the &quot;Architecture&quot; style: dark slate (#1c2128) background, Josefin Sans headings (warm white #e8e3d8), body text warm gray (#b0aa9e), gold accent (#d4a853). Sophisticated editorial portfolio feel with clean geometric lines. Ideal for creative agencies, design studios, and architecture presentations.')">COPY PROMPT</button>
-      </div>
-    </div>
-
-    <!-- 8. TECH KEYNOTE -->
-    <div class="style-card">
-      <svg class="style-thumb" viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
-        <rect width="320" height="180" fill="#0a0a14"/>
-        <defs>
-          <radialGradient id="tg" cx="50%" cy="50%" r="60%">
-            <stop offset="0%" stop-color="#4169e1" stop-opacity="0.25"/>
-            <stop offset="100%" stop-color="#0a0a14" stop-opacity="0"/>
-          </radialGradient>
-        </defs>
-        <rect width="320" height="180" fill="url(#tg)"/>
-        <rect x="40" y="48" width="36" height="3" fill="#4169e1"/>
-        <text x="40" y="76" font-family="Arial,sans-serif" font-size="22" fill="#e0e8ff" font-weight="700" letter-spacing="1">Tech Keynote</text>
-        <text x="40" y="96" font-family="Arial,sans-serif" font-size="11" fill="#8899bb">Conference-stage impact</text>
-        <text x="40" y="124" font-family="Arial,sans-serif" font-size="10" fill="#8899bb" opacity="0.8">— Electric blue on midnight</text>
-        <text x="40" y="140" font-family="Arial,sans-serif" font-size="10" fill="#8899bb" opacity="0.8">— Big numbers · bold claims</text>
-      </svg>
-      <div class="style-info">
-        <div class="style-name">TECH KEYNOTE</div>
-        <div class="style-desc">Midnight blue + Rajdhani + electric blue accent. Conference-stage impact — tech announcements, product launches, SaaS demos.</div>
-        <button class="style-copy-btn" onclick="copyStyle(this, 'Use the &quot;Tech Keynote&quot; style: midnight near-black (#0a0a14) background, Rajdhani headings (pale blue #e0e8ff), Inter body text (steel blue #8899bb), electric blue accent (#4169e1). Conference keynote energy with strong visual impact. Ideal for tech announcements, product launches, and SaaS demos.')">COPY PROMPT</button>
-      </div>
-    </div>
-
-    <!-- 9. NATURE EARTH -->
-    <div class="style-card">
-      <svg class="style-thumb" viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
-        <rect width="320" height="180" fill="#f5f0e8"/>
-        <rect x="260" y="0" width="60" height="180" fill="#6b8f4e" opacity="0.12"/>
-        <rect x="40" y="56" width="22" height="22" fill="#6b8f4e" opacity="0.25" rx="2"/>
-        <text x="72" y="72" font-family="Georgia,serif" font-size="19" fill="#2d4a2d" font-weight="600">Nature Earth</text>
-        <text x="40" y="96" font-family="Arial,sans-serif" font-size="11" fill="#4a5a42">Wellness · Sustainability · Organic</text>
-        <rect x="40" y="110" width="180" height="1.5" fill="#6b8f4e" opacity="0.4"/>
-        <text x="40" y="128" font-family="Arial,sans-serif" font-size="10" fill="#4a5a42">— Calm and grounded</text>
-        <text x="40" y="144" font-family="Arial,sans-serif" font-size="10" fill="#4a5a42">— Natural materials palette</text>
-      </svg>
-      <div class="style-info">
-        <div class="style-name">NATURE EARTH</div>
-        <div class="style-desc">Warm cream + Lora + forest green. Grounded and organic — wellness brands, sustainability reports, environmental and health presentations.</div>
-        <button class="style-copy-btn" onclick="copyStyle(this, 'Use the &quot;Nature Earth&quot; style: warm cream (#f5f0e8) background, Lora headings (deep forest green #2d4a2d), Raleway body text (sage green #4a5a42), leaf green accent (#6b8f4e). Calm, grounded, organic feel. Ideal for wellness brands, sustainability reports, and health/environmental presentations.')">COPY PROMPT</button>
-      </div>
-    </div>
-
-    <!-- 10. CINEMATIC -->
-    <div class="style-card">
-      <svg class="style-thumb" viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
-        <rect width="320" height="180" fill="#0d0d0d"/>
-        <rect x="0" y="0" width="320" height="14" fill="#0d0d0d" opacity="0.9"/>
-        <rect x="0" y="166" width="320" height="14" fill="#0d0d0d" opacity="0.9"/>
-        <text x="40" y="60" font-family="Impact,Arial Black,sans-serif" font-size="32" fill="#d4892a" letter-spacing="3">CINEMATIC</text>
-        <text x="40" y="84" font-family="Georgia,serif" font-size="12" fill="#f0e8d8" font-style="italic">A story told in light and shadow</text>
-        <rect x="40" y="100" width="240" height="0.8" fill="#d4892a" opacity="0.5"/>
-        <text x="40" y="120" font-family="Arial,sans-serif" font-size="9" fill="#b8aa99" letter-spacing="4">FRAME 01 / 12</text>
-      </svg>
-      <div class="style-info">
-        <div class="style-name">CINEMATIC</div>
-        <div class="style-desc">Near-black + Bebas Neue + amber gold. Bold and dramatic — brand storytelling, film/creative industry, event presentations.</div>
-        <button class="style-copy-btn" onclick="copyStyle(this, 'Use the &quot;Cinematic&quot; style: near-black (#0d0d0d) background, Bebas Neue headings (warm cream #f0e8d8), Source Serif 4 body text (aged paper #b8aa99), amber gold accent (#d4892a). Bold, dramatic, cinematic feel. Ideal for brand storytelling, creative industry presentations, and event decks.')">COPY PROMPT</button>
-      </div>
-    </div>
-
-  </div><!-- /gallery-grid -->
-
-  <div style="margin-top:48px; text-align:center;">
-    <a class="dl-btn" href="index.html">← BACK TO SETUP GUIDE</a>
+<!-- ── Hero ──────────────────────────────────────────────────────── -->
+<header class="gallery-hero" id="main">
+  <div class="container">
+    <span class="hero-eyebrow">Styles gallery</span>
+    <h1>Pick a style. Paste the prompt. Done.</h1>
+    <p>10 prebuilt themes — click any card to copy the prompt snippet, then paste it into Claude when it asks about style.</p>
   </div>
+</header>
 
-  <footer>
-    <p>quick-deck v1.0 · MIT · <a href="https://github.com/cwspoeticartistry/quick-deck">github.com/cwspoeticartistry/quick-deck</a></p>
-    <p style="margin-top:8px; font-size:14px;">Design principles: <a href="https://github.com/ItsssssJack/power-design">Jack Roberts / power-design</a> (MIT)</p>
-  </footer>
+<!-- ── Gallery ───────────────────────────────────────────────────── -->
+<section class="gallery-section" aria-labelledby="gallery-heading">
+  <div class="container">
+    <p class="gallery-helper" id="gallery-heading">
+      Click a card → snippet copied to clipboard → paste into Claude as your answer to Question 2.
+    </p>
 
-</div>
+    <div class="style-grid" role="list">
+
+      <!-- 1. EDITORIAL DARK -->
+      <div class="style-card fade-in" role="listitem">
+        <div class="style-card-thumb">
+          <svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
+            <rect width="320" height="180" fill="#111111"/>
+            <rect x="40" y="52" width="28" height="3" fill="#c9a14a"/>
+            <text x="40" y="80" font-family="Georgia,serif" font-size="22" fill="#f5f0e8" font-weight="bold">Editorial Dark</text>
+            <text x="40" y="100" font-family="Arial,sans-serif" font-size="11" fill="#c8c4bc">Magazine editorial feel</text>
+            <rect x="40" y="115" width="180" height="1.5" fill="#c9a14a" opacity="0.4"/>
+            <text x="40" y="130" font-family="Arial,sans-serif" font-size="10" fill="#c8c4bc" opacity="0.8">— Strong typographic hierarchy</text>
+            <text x="40" y="145" font-family="Arial,sans-serif" font-size="10" fill="#c8c4bc" opacity="0.8">— Generous whitespace</text>
+            <rect x="250" y="40" width="30" height="100" fill="#c9a14a" opacity="0.08"/>
+          </svg>
+        </div>
+        <div class="style-card-body">
+          <div class="style-card-name">Editorial Dark</div>
+          <div class="style-card-desc">Deep charcoal + Playfair Display + gold accent. Magazine editorial feel with dramatic typographic hierarchy.</div>
+          <button class="copy-prompt-btn" onclick="copyPrompt(this,'Use the &quot;Editorial Dark&quot; style: deep charcoal (#111111) background, Playfair Display headings (cream #f5f0e8), Inter body text (warm gray #c8c4bc), gold accent (#c9a14a). Magazine editorial feel, generous whitespace, strong typographic hierarchy.')" aria-label="Copy Editorial Dark style prompt">Copy prompt</button>
+        </div>
+      </div>
+
+      <!-- 2. CLEAN CORPORATE -->
+      <div class="style-card fade-in" role="listitem">
+        <div class="style-card-thumb">
+          <svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
+            <rect width="320" height="180" fill="#ffffff"/>
+            <rect x="0" y="0" width="320" height="6" fill="#2563eb"/>
+            <rect x="40" y="35" width="24" height="3" fill="#2563eb"/>
+            <text x="40" y="70" font-family="Arial,sans-serif" font-size="20" fill="#1a2b4a" font-weight="bold">Clean Corporate</text>
+            <text x="40" y="90" font-family="Arial,sans-serif" font-size="11" fill="#4a5568">Professional business presentation</text>
+            <line x1="40" y1="105" x2="240" y2="105" stroke="#e2e8f0" stroke-width="1.5"/>
+            <text x="40" y="122" font-family="Arial,sans-serif" font-size="10" fill="#4a5568">• Clear structure and data-forward</text>
+            <text x="40" y="138" font-family="Arial,sans-serif" font-size="10" fill="#4a5568">• Works for board decks and reports</text>
+            <rect x="270" y="30" width="20" height="120" fill="#2563eb" opacity="0.06"/>
+          </svg>
+        </div>
+        <div class="style-card-body">
+          <div class="style-card-name">Clean Corporate</div>
+          <div class="style-card-desc">White + navy + IBM Plex Sans + blue accent. Trusted, professional — built for board decks and client reports.</div>
+          <button class="copy-prompt-btn" onclick="copyPrompt(this,'Use the &quot;Clean Corporate&quot; style: white (#ffffff) background, IBM Plex Sans headings (dark navy #1a2b4a), body text slate gray (#4a5568), blue accent (#2563eb). Professional business feel, clean lines, data-forward layout.')" aria-label="Copy Clean Corporate style prompt">Copy prompt</button>
+        </div>
+      </div>
+
+      <!-- 3. PLAYFUL STARTUP -->
+      <div class="style-card fade-in" role="listitem">
+        <div class="style-card-thumb">
+          <svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
+            <rect width="320" height="180" fill="#0f0e17"/>
+            <circle cx="270" cy="40" r="50" fill="#ff8906" opacity="0.12"/>
+            <text x="40" y="72" font-family="Arial,sans-serif" font-size="22" fill="#fffffe" font-weight="bold">Playful Startup</text>
+            <text x="40" y="92" font-family="Arial,sans-serif" font-size="11" fill="#a7a9be">Bold and energetic tech feel</text>
+            <rect x="40" y="110" width="60" height="3" fill="#ff8906"/>
+            <text x="40" y="130" font-family="Arial,sans-serif" font-size="10" fill="#a7a9be" opacity="0.9">— Modern. Direct. Confident.</text>
+            <text x="40" y="148" font-family="Arial,sans-serif" font-size="10" fill="#a7a9be" opacity="0.9">— Ideal for demos and pitches</text>
+          </svg>
+        </div>
+        <div class="style-card-body">
+          <div class="style-card-name">Playful Startup</div>
+          <div class="style-card-desc">Near-black + Space Grotesk + orange accent. Bold, energetic — ideal for product demos and investor pitches.</div>
+          <button class="copy-prompt-btn" onclick="copyPrompt(this,'Use the &quot;Playful Startup&quot; style: near-black (#0f0e17) background, Space Grotesk headings (off-white #fffffe), body text muted blue-gray (#a7a9be), orange accent (#ff8906). Bold and energetic tech feel, confident layouts, ideal for demos and pitches.')" aria-label="Copy Playful Startup style prompt">Copy prompt</button>
+        </div>
+      </div>
+
+      <!-- 4. LUXURY MINIMAL -->
+      <div class="style-card fade-in" role="listitem">
+        <div class="style-card-thumb">
+          <svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
+            <rect width="320" height="180" fill="#f5f0e6"/>
+            <rect x="40" y="58" width="200" height="0.8" fill="#8b7355" opacity="0.5"/>
+            <text x="40" y="86" font-family="Georgia,serif" font-size="20" fill="#1a1a1a" font-style="italic">Luxury Minimal</text>
+            <rect x="40" y="96" width="200" height="0.8" fill="#8b7355" opacity="0.5"/>
+            <text x="40" y="114" font-family="Arial,sans-serif" font-size="10" fill="#3d3d3d" letter-spacing="3">REFINED · ELEVATED · RESTRAINED</text>
+            <rect x="255" y="60" width="1.5" height="60" fill="#8b7355" opacity="0.4"/>
+            <text x="263" y="80" font-family="Georgia,serif" font-size="9" fill="#8b7355" font-style="italic">01</text>
+          </svg>
+        </div>
+        <div class="style-card-body">
+          <div class="style-card-name">Luxury Minimal</div>
+          <div class="style-card-desc">Cream + Cormorant Garamond + warm gold. Refined and restrained — high-end brands, luxury products, premium services.</div>
+          <button class="copy-prompt-btn" onclick="copyPrompt(this,'Use the &quot;Luxury Minimal&quot; style: warm cream (#f5f0e6) background, Cormorant Garamond headings (near-black #1a1a1a), Montserrat body text (charcoal #3d3d3d), warm taupe accent (#8b7355). Refined, restrained, elevated — ideal for luxury brands and premium services.')" aria-label="Copy Luxury Minimal style prompt">Copy prompt</button>
+        </div>
+      </div>
+
+      <!-- 5. BOLD MONO -->
+      <div class="style-card fade-in" role="listitem">
+        <div class="style-card-thumb">
+          <svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
+            <rect width="320" height="180" fill="#000000"/>
+            <rect x="40" y="40" width="240" height="2" fill="#39ff14"/>
+            <text x="40" y="78" font-family="Courier New,monospace" font-size="26" fill="#ffffff" font-weight="bold">BOLD_MONO</text>
+            <text x="40" y="98" font-family="Courier New,monospace" font-size="10" fill="#e0e0e0">// brutalist.tech.aesthetic()</text>
+            <rect x="40" y="140" width="240" height="2" fill="#39ff14"/>
+            <text x="40" y="162" font-family="Courier New,monospace" font-size="9" fill="#39ff14">STATUS: ACTIVE █</text>
+          </svg>
+        </div>
+        <div class="style-card-body">
+          <div class="style-card-name">Bold Mono</div>
+          <div class="style-card-desc">Pure black + Courier Prime + neon green accent. Brutalist tech aesthetic — dev tools, code demos, technical deep-dives.</div>
+          <button class="copy-prompt-btn" onclick="copyPrompt(this,'Use the &quot;Bold Mono&quot; style: pure black (#000000) background, Courier Prime headings (white #ffffff), body text light gray (#e0e0e0), neon green accent (#39ff14). Brutalist monospace aesthetic, minimal decoration, high contrast. Ideal for technical and developer-focused presentations.')" aria-label="Copy Bold Mono style prompt">Copy prompt</button>
+        </div>
+      </div>
+
+      <!-- 6. SOFT PASTEL -->
+      <div class="style-card fade-in" role="listitem">
+        <div class="style-card-thumb">
+          <svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
+            <rect width="320" height="180" fill="#f8f6ff"/>
+            <circle cx="260" cy="30" r="60" fill="#8b80c4" opacity="0.12"/>
+            <circle cx="60" cy="160" r="40" fill="#8b80c4" opacity="0.08"/>
+            <rect x="40" y="54" width="20" height="3" fill="#8b80c4" rx="2"/>
+            <text x="40" y="82" font-family="Arial,sans-serif" font-size="19" fill="#2d2b55" font-weight="600">Soft Pastel</text>
+            <text x="40" y="102" font-family="Arial,sans-serif" font-size="11" fill="#4a4870">Approachable and friendly</text>
+            <text x="40" y="124" font-family="Arial,sans-serif" font-size="10" fill="#4a4870" opacity="0.85">— Perfect for workshops</text>
+            <text x="40" y="140" font-family="Arial,sans-serif" font-size="10" fill="#4a4870" opacity="0.85">— Education and training decks</text>
+          </svg>
+        </div>
+        <div class="style-card-body">
+          <div class="style-card-name">Soft Pastel</div>
+          <div class="style-card-desc">Lavender + Nunito + purple accent. Warm and approachable — workshops, education, onboarding, community presentations.</div>
+          <button class="copy-prompt-btn" onclick="copyPrompt(this,'Use the &quot;Soft Pastel&quot; style: soft lavender-white (#f8f6ff) background, Nunito headings (deep purple #2d2b55), DM Sans body text (medium purple #4a4870), muted purple accent (#8b80c4). Approachable, friendly, warm — ideal for workshops, education, and training decks.')" aria-label="Copy Soft Pastel style prompt">Copy prompt</button>
+        </div>
+      </div>
+
+      <!-- 7. ARCHITECTURE -->
+      <div class="style-card fade-in" role="listitem">
+        <div class="style-card-thumb">
+          <svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
+            <rect width="320" height="180" fill="#1c2128"/>
+            <rect x="0" y="0" width="6" height="180" fill="#d4a853" opacity="0.6"/>
+            <text x="28" y="50" font-family="Arial,sans-serif" font-size="9" fill="#d4a853" letter-spacing="5">PORTFOLIO</text>
+            <text x="28" y="82" font-family="Arial,sans-serif" font-size="22" fill="#e8e3d8" font-weight="300" letter-spacing="2">Architecture</text>
+            <text x="28" y="102" font-family="Arial,sans-serif" font-size="10" fill="#b0aa9e" letter-spacing="1">Studio — 2026</text>
+            <rect x="28" y="118" width="140" height="0.8" fill="#d4a853" opacity="0.5"/>
+            <rect x="220" y="40" width="80" height="100" fill="#d4a853" opacity="0.05"/>
+          </svg>
+        </div>
+        <div class="style-card-body">
+          <div class="style-card-name">Architecture</div>
+          <div class="style-card-desc">Dark slate + Josefin Sans + warm gold. Sophisticated portfolio feel — creative agencies, design studios, property and architecture.</div>
+          <button class="copy-prompt-btn" onclick="copyPrompt(this,'Use the &quot;Architecture&quot; style: dark slate (#1c2128) background, Josefin Sans headings (warm white #e8e3d8), body text warm gray (#b0aa9e), gold accent (#d4a853). Sophisticated editorial portfolio feel with clean geometric lines. Ideal for creative agencies, design studios, and architecture presentations.')" aria-label="Copy Architecture style prompt">Copy prompt</button>
+        </div>
+      </div>
+
+      <!-- 8. TECH KEYNOTE -->
+      <div class="style-card fade-in" role="listitem">
+        <div class="style-card-thumb">
+          <svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
+            <rect width="320" height="180" fill="#0a0a14"/>
+            <defs>
+              <radialGradient id="tg" cx="50%" cy="50%" r="60%">
+                <stop offset="0%" stop-color="#4169e1" stop-opacity="0.25"/>
+                <stop offset="100%" stop-color="#0a0a14" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <rect width="320" height="180" fill="url(#tg)"/>
+            <rect x="40" y="48" width="36" height="3" fill="#4169e1"/>
+            <text x="40" y="76" font-family="Arial,sans-serif" font-size="22" fill="#e0e8ff" font-weight="700" letter-spacing="1">Tech Keynote</text>
+            <text x="40" y="96" font-family="Arial,sans-serif" font-size="11" fill="#8899bb">Conference-stage impact</text>
+            <text x="40" y="124" font-family="Arial,sans-serif" font-size="10" fill="#8899bb" opacity="0.8">— Electric blue on midnight</text>
+            <text x="40" y="140" font-family="Arial,sans-serif" font-size="10" fill="#8899bb" opacity="0.8">— Big numbers · bold claims</text>
+          </svg>
+        </div>
+        <div class="style-card-body">
+          <div class="style-card-name">Tech Keynote</div>
+          <div class="style-card-desc">Midnight blue + Rajdhani + electric blue accent. Conference-stage impact — tech announcements, product launches, SaaS demos.</div>
+          <button class="copy-prompt-btn" onclick="copyPrompt(this,'Use the &quot;Tech Keynote&quot; style: midnight near-black (#0a0a14) background, Rajdhani headings (pale blue #e0e8ff), Inter body text (steel blue #8899bb), electric blue accent (#4169e1). Conference keynote energy with strong visual impact. Ideal for tech announcements, product launches, and SaaS demos.')" aria-label="Copy Tech Keynote style prompt">Copy prompt</button>
+        </div>
+      </div>
+
+      <!-- 9. NATURE EARTH -->
+      <div class="style-card fade-in" role="listitem">
+        <div class="style-card-thumb">
+          <svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
+            <rect width="320" height="180" fill="#f5f0e8"/>
+            <rect x="260" y="0" width="60" height="180" fill="#6b8f4e" opacity="0.12"/>
+            <rect x="40" y="56" width="22" height="22" fill="#6b8f4e" opacity="0.25" rx="2"/>
+            <text x="72" y="72" font-family="Georgia,serif" font-size="19" fill="#2d4a2d" font-weight="600">Nature Earth</text>
+            <text x="40" y="96" font-family="Arial,sans-serif" font-size="11" fill="#4a5a42">Wellness · Sustainability · Organic</text>
+            <rect x="40" y="110" width="180" height="1.5" fill="#6b8f4e" opacity="0.4"/>
+            <text x="40" y="128" font-family="Arial,sans-serif" font-size="10" fill="#4a5a42">— Calm and grounded</text>
+            <text x="40" y="144" font-family="Arial,sans-serif" font-size="10" fill="#4a5a42">— Natural materials palette</text>
+          </svg>
+        </div>
+        <div class="style-card-body">
+          <div class="style-card-name">Nature Earth</div>
+          <div class="style-card-desc">Warm cream + Lora + forest green. Grounded and organic — wellness brands, sustainability reports, environmental presentations.</div>
+          <button class="copy-prompt-btn" onclick="copyPrompt(this,'Use the &quot;Nature Earth&quot; style: warm cream (#f5f0e8) background, Lora headings (deep forest green #2d4a2d), Raleway body text (sage green #4a5a42), leaf green accent (#6b8f4e). Calm, grounded, organic feel. Ideal for wellness brands, sustainability reports, and health/environmental presentations.')" aria-label="Copy Nature Earth style prompt">Copy prompt</button>
+        </div>
+      </div>
+
+      <!-- 10. CINEMATIC -->
+      <div class="style-card fade-in" role="listitem">
+        <div class="style-card-thumb">
+          <svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
+            <rect width="320" height="180" fill="#0d0d0d"/>
+            <rect x="0" y="0" width="320" height="14" fill="#0d0d0d" opacity="0.9"/>
+            <rect x="0" y="166" width="320" height="14" fill="#0d0d0d" opacity="0.9"/>
+            <text x="40" y="60" font-family="Impact,Arial Black,sans-serif" font-size="32" fill="#d4892a" letter-spacing="3">CINEMATIC</text>
+            <text x="40" y="84" font-family="Georgia,serif" font-size="12" fill="#f0e8d8" font-style="italic">A story told in light and shadow</text>
+            <rect x="40" y="100" width="240" height="0.8" fill="#d4892a" opacity="0.5"/>
+            <text x="40" y="120" font-family="Arial,sans-serif" font-size="9" fill="#b8aa99" letter-spacing="4">FRAME 01 / 12</text>
+          </svg>
+        </div>
+        <div class="style-card-body">
+          <div class="style-card-name">Cinematic</div>
+          <div class="style-card-desc">Near-black + Bebas Neue + amber gold. Bold and dramatic — brand storytelling, film/creative industry, event presentations.</div>
+          <button class="copy-prompt-btn" onclick="copyPrompt(this,'Use the &quot;Cinematic&quot; style: near-black (#0d0d0d) background, Bebas Neue headings (warm cream #f0e8d8), Source Serif 4 body text (aged paper #b8aa99), amber gold accent (#d4892a). Bold, dramatic, cinematic feel. Ideal for brand storytelling, creative industry presentations, and event decks.')" aria-label="Copy Cinematic style prompt">Copy prompt</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── Footer ─────────────────────────────────────────────────────── -->
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-left">
+      <span class="footer-wordmark">quick-deck</span>
+      <span class="footer-attr">Built on <a href="https://github.com/ItsssssJack/power-design" target="_blank" rel="noopener">Jack Roberts' power-design</a> (MIT). Free forever.</span>
+    </div>
+    <div class="footer-right">
+      <span class="footer-pill">Free forever · Open source</span>
+      <a class="footer-github" href="https://github.com/cwspoeticartistry/quick-deck" aria-label="GitHub repository" target="_blank" rel="noopener">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.745 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</footer>
 
 <script>
-function copyStyle(btn, text) {
-  navigator.clipboard.writeText(text).then(() => {
-    btn.textContent = '✓ COPIED — PASTE INTO CLAUDE';
+function copyPrompt(btn, text) {
+  const label = btn.textContent;
+  const copy = () => {
+    btn.textContent = 'Copied — paste into Claude ✓';
     btn.classList.add('copied');
-    setTimeout(() => { btn.textContent = 'COPY PROMPT'; btn.classList.remove('copied'); }, 3000);
-  }).catch(() => {
+    btn.setAttribute('aria-label', 'Copied to clipboard');
+    setTimeout(() => {
+      btn.textContent = label;
+      btn.classList.remove('copied');
+      btn.setAttribute('aria-label', btn.getAttribute('aria-label').replace('Copied to clipboard', 'Copy style prompt'));
+    }, 3000);
+  };
+
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(copy);
+  } else {
     const ta = document.createElement('textarea');
     ta.value = text;
-    ta.style.position = 'fixed';
-    ta.style.opacity = '0';
+    ta.style.cssText = 'position:fixed;opacity:0;';
     document.body.appendChild(ta);
     ta.select();
     document.execCommand('copy');
     document.body.removeChild(ta);
-    btn.textContent = '✓ COPIED — PASTE INTO CLAUDE';
-    btn.classList.add('copied');
-    setTimeout(() => { btn.textContent = 'COPY PROMPT'; btn.classList.remove('copied'); }, 3000);
-  });
+    copy();
+  }
 }
+
+// Scroll fade-in
+(function () {
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduced) {
+    document.querySelectorAll('.fade-in').forEach(el => el.classList.add('visible'));
+    return;
+  }
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.08, rootMargin: '0px 0px -24px 0px' });
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+})();
 </script>
+
 </body>
 </html>

@@ -1,200 +1,478 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>quick-deck — AI Presentation Builder Setup</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>quick-deck — Build beautiful presentations with any Claude</title>
+  <meta name="description" content="A free, portable skill for Claude. Answer three questions, get a browser-ready HTML presentation. Works with Claude Code, Claude Desktop, and Claude.ai. No API keys.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="page">
 
-  <!-- ═══════════════════════════════════ HEADER ═══ -->
-  <header class="site-header">
-    <div class="site-title">★ QUICK-DECK ★<br>AI PRESENTATION BUILDER</div>
-    <p class="site-sub">Install Claude's presentation skill in 60 seconds.<br>Build beautiful HTML decks. Export as PDF. No paid services.</p>
-  </header>
+<a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- ═══════════════════════════════════ SECTION 1 ══ -->
-  <section class="section" data-label="01 // REQUIREMENTS">
-    <h2>WHAT YOU NEED</h2>
-    <ul class="steps">
-      <li><span class="accent">Claude</span> — any flavour: Claude Code (CLI), Claude Desktop, or Claude.ai</li>
-      <li><span class="accent">A modern browser</span> — Chrome, Edge, Firefox, or Safari</li>
-      <li><span class="accent">No paid services</span> — no API keys, no accounts, no installs beyond Claude</li>
+<!-- ── Nav ──────────────────────────────────────────────────────── -->
+<nav class="site-nav" aria-label="Site navigation">
+  <div class="nav-inner">
+    <a class="nav-wordmark" href="#main">quick-deck</a>
+    <ul class="nav-links" role="list">
+      <li><a href="#install">Install</a></li>
+      <li><a href="#styles">Styles</a></li>
+      <li><a href="#faq">FAQ</a></li>
     </ul>
-    <p class="txt-dim" style="margin-top:20px;">The skill renders decks as local HTML files you open in your browser. PDF export is Ctrl+P → Save as PDF — built into every browser.</p>
-  </section>
+    <a class="nav-github" href="https://github.com/cwspoeticartistry/quick-deck" aria-label="View on GitHub" target="_blank" rel="noopener">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.745 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/>
+      </svg>
+    </a>
+  </div>
+</nav>
 
-  <!-- ═══════════════════════════════════ SECTION 2 ══ -->
-  <section class="section" data-label="02 // INSTALL">
-    <h2>INSTALL THE SKILL</h2>
-    <p class="txt">Download the skill file first, then follow <span class="accent">Path A</span> (Claude Code) or <span class="accent">Path B</span> (Claude Desktop / .ai) below.</p>
+<!-- ── Hero ─────────────────────────────────────────────────────── -->
+<section class="hero" id="main">
+  <div class="container">
+    <span class="hero-eyebrow">Claude Skill</span>
+    <h1>The fastest way to build a beautiful presentation in any Claude.</h1>
+    <p class="hero-sub">Answer three questions. Get a browser-ready HTML deck. Print to PDF in one keystroke. No API keys, no installs beyond Claude itself.</p>
+    <div class="hero-actions">
+      <a href="#install" class="btn-primary">Get the skill ↓</a>
+      <a href="styles.html" class="btn-ghost">See styles →</a>
+    </div>
+  </div>
+</section>
 
-    <div style="text-align:center; margin: 24px 0;">
-      <a class="dl-btn" href="quick-deck.md" download="quick-deck.md">
-        ▼ DOWNLOAD quick-deck.md
+<!-- ── Features ──────────────────────────────────────────────────── -->
+<section class="features fade-in" aria-labelledby="features-heading">
+  <div class="container">
+    <div class="features-grid">
+
+      <div class="feature-item">
+        <div class="feature-icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+        </div>
+        <div class="feature-title">Any Claude</div>
+        <div class="feature-desc">Works as a Claude Code skill, a Claude Desktop file attachment, and on Claude.ai. One file, every flavour.</div>
+      </div>
+
+      <div class="feature-item">
+        <div class="feature-icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="feature-title">No API keys</div>
+        <div class="feature-desc">Zero credentials required. No Firecrawl, no image services, no paid APIs. Just your existing Claude subscription.</div>
+      </div>
+
+      <div class="feature-item">
+        <div class="feature-icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
+        </div>
+        <div class="feature-title">PDF-ready</div>
+        <div class="feature-desc">Every deck renders as a local HTML file. One slide per page. Open in your browser, hit Ctrl+P, save as PDF.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── Install ───────────────────────────────────────────────────── -->
+<section class="install fade-in" id="install" aria-labelledby="install-heading">
+  <div class="container">
+    <div class="section-label">Get started</div>
+    <h2 class="section-heading" id="install-heading">Pick your install path.</h2>
+    <p class="section-sub">Both paths end with the same three-question conversation and the same HTML output.</p>
+
+    <!-- Card grid (collapsed view) -->
+    <div class="card-grid" id="card-grid" role="group" aria-label="Install path selection">
+
+      <!-- Path A card -->
+      <button class="install-card" id="card-a" aria-expanded="false" aria-controls="detail-a" onclick="openDetail('a')">
+        <div class="install-card-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+        </div>
+        <div class="install-card-title">Claude Code</div>
+        <div class="install-card-desc">If you use the Claude Code CLI, install quick-deck as a permanent skill. One setup, always available.</div>
+        <div class="install-card-cta" aria-hidden="true">Set up Claude Code <span>→</span></div>
+      </button>
+
+      <!-- Path B card -->
+      <button class="install-card" id="card-b" aria-expanded="false" aria-controls="detail-b" onclick="openDetail('b')">
+        <div class="install-card-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <div class="install-card-title">Claude Desktop &amp; Claude.ai</div>
+        <div class="install-card-desc">Download the skill file and attach it to any Claude conversation. Works on any device, no install required.</div>
+        <div class="install-card-cta" aria-hidden="true">Set up Desktop / .ai <span>→</span></div>
+      </button>
+
+    </div>
+
+    <!-- Detail: Path A -->
+    <div class="card-detail" id="detail-a" role="region" aria-labelledby="detail-a-heading" aria-hidden="true">
+      <button class="card-detail-back" onclick="closeDetail()" aria-label="Back to install path selection">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        Back
+      </button>
+      <h3 class="card-detail-title" id="detail-a-heading">Install for Claude Code</h3>
+      <ol class="steps" role="list">
+
+        <li class="step">
+          <div class="step-num" aria-hidden="true">1</div>
+          <div class="step-content">
+            <h4>Download the skill file</h4>
+            <p>This single Markdown file is the entire skill. Claude reads it and knows exactly what to do.</p>
+            <a href="quick-deck.md" download="quick-deck.md" class="dl-btn" id="dl-btn-a">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Download quick-deck.md
+            </a>
+          </div>
+        </li>
+
+        <li class="step">
+          <div class="step-num" aria-hidden="true">2</div>
+          <div class="step-content">
+            <h4>Move it to your skills folder</h4>
+            <p>Rename the file to <code>SKILL.md</code> and place it in the Claude Code skills folder for your operating system:</p>
+
+            <div class="copy-tabs" role="tablist" aria-label="Operating system">
+              <button class="copy-tab active" role="tab" aria-selected="true" onclick="switchTab(this,'path-mac')">Mac / Linux</button>
+              <button class="copy-tab" role="tab" aria-selected="false" onclick="switchTab(this,'path-win')">Windows</button>
+            </div>
+
+            <div id="path-mac" class="copy-block">
+              <span class="copy-block-code">~/.claude/skills/quick-deck/SKILL.md</span>
+              <button class="copy-btn" onclick="copyText(this,'~/.claude/skills/quick-deck/SKILL.md')" aria-label="Copy Mac path">Copy</button>
+            </div>
+            <div id="path-win" class="copy-block" style="display:none">
+              <span class="copy-block-code">%USERPROFILE%\.claude\skills\quick-deck\SKILL.md</span>
+              <button class="copy-btn" onclick="copyText(this,'%USERPROFILE%\\.claude\\skills\\quick-deck\\SKILL.md')" aria-label="Copy Windows path">Copy</button>
+            </div>
+
+            <p style="margin-top:12px;font-size:13px;color:var(--ink-mute)">You may need to create the <code>skills/quick-deck/</code> folder first.</p>
+          </div>
+        </li>
+
+        <li class="step">
+          <div class="step-num" aria-hidden="true">3</div>
+          <div class="step-content">
+            <h4>Open Claude Code and trigger the skill</h4>
+            <p>Restart Claude Code if it was already open, then type this phrase in any conversation:</p>
+            <div class="copy-block">
+              <span class="copy-block-code">use quick-deck</span>
+              <button class="copy-btn" onclick="copyText(this,'use quick-deck')" aria-label="Copy trigger phrase">Copy</button>
+            </div>
+            <p style="margin-top:12px;font-size:13px;color:var(--ink-mute)">Claude will greet you with the first question immediately.</p>
+          </div>
+        </li>
+
+      </ol>
+    </div>
+
+    <!-- Detail: Path B -->
+    <div class="card-detail" id="detail-b" role="region" aria-labelledby="detail-b-heading" aria-hidden="true">
+      <button class="card-detail-back" onclick="closeDetail()" aria-label="Back to install path selection">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        Back
+      </button>
+      <h3 class="card-detail-title" id="detail-b-heading">Install for Claude Desktop &amp; Claude.ai</h3>
+      <ol class="steps" role="list">
+
+        <li class="step">
+          <div class="step-num" aria-hidden="true">1</div>
+          <div class="step-content">
+            <h4>Download the skill file</h4>
+            <p>This single Markdown file is the entire skill. Claude reads it and knows exactly what to do.</p>
+            <a href="quick-deck.md" download="quick-deck.md" class="dl-btn" id="dl-btn-b">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Download quick-deck.md
+            </a>
+          </div>
+        </li>
+
+        <li class="step">
+          <div class="step-num" aria-hidden="true">2</div>
+          <div class="step-content">
+            <h4>Start a new conversation and attach the file</h4>
+            <p>In Claude Desktop or on Claude.ai, open a fresh conversation. Use the paperclip or attachment button to attach the <code>quick-deck.md</code> file you just downloaded.</p>
+          </div>
+        </li>
+
+        <li class="step">
+          <div class="step-num" aria-hidden="true">3</div>
+          <div class="step-content">
+            <h4>Send this message to activate</h4>
+            <p>With the file attached, send exactly this message:</p>
+            <div class="copy-block">
+              <span class="copy-block-code">Please follow the instructions in the attached file.</span>
+              <button class="copy-btn" onclick="copyText(this,'Please follow the instructions in the attached file.')" aria-label="Copy activation message">Copy</button>
+            </div>
+            <p style="margin-top:12px;font-size:13px;color:var(--ink-mute)">Claude will greet you with the first question immediately. You can reuse the same attached file in future conversations.</p>
+          </div>
+        </li>
+
+      </ol>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── Conversation preview ───────────────────────────────────────── -->
+<section class="conversation fade-in" id="preview" aria-labelledby="preview-heading">
+  <div class="container">
+    <div class="section-label">What to expect</div>
+    <h2 class="section-heading" id="preview-heading">Three questions. One deck.</h2>
+    <p class="section-sub">After activation, Claude walks you through a short intake. Here's what that looks like.</p>
+
+    <div class="chat-window" role="log" aria-live="polite" aria-label="Example conversation">
+
+      <div class="bubble bubble-claude">
+        <div class="bubble-q-label">Question 1 — Type</div>
+        What type of presentation would you like me to create today? Do you have an existing one to update, an example to recreate, or would you like to describe what you want from scratch?
+      </div>
+      <div class="bubble bubble-user">A new sales pitch deck — about 10 slides.</div>
+
+      <div class="bubble bubble-claude">
+        <div class="bubble-q-label">Question 2 — Style</div>
+        Is there a particular style you have in mind? You can paste a reference link, or browse our prebuilt styles at <strong>styles.html</strong> — click any card and paste the snippet it gives you here.
+      </div>
+      <div class="bubble bubble-user">Use the "Editorial Dark" style.</div>
+
+      <div class="bubble bubble-claude">
+        <div class="bubble-q-label">Question 3 — Assets</div>
+        Do you have any assets to include — a logo, images, or a previous deck? Attach files, paste image URLs, or say "none" to use CSS-only visuals.
+      </div>
+      <div class="bubble bubble-user">None for now.</div>
+
+      <div class="bubble bubble-claude">
+        Got it. Here's my proposed outline — please confirm or tell me what to change before I build the deck…
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── Styles CTA ─────────────────────────────────────────────────── -->
+<section class="styles-cta fade-in" id="styles" aria-labelledby="styles-heading">
+  <div class="container">
+    <div class="styles-cta-inner">
+
+      <div>
+        <div class="section-label">Styles gallery</div>
+        <h2 class="section-heading" id="styles-heading">10 prebuilt styles, ready to paste.</h2>
+        <p style="color:var(--ink-mute);margin-bottom:32px">Browse the gallery, click a style card, and paste the snippet Claude gives you when it asks for your style preference.</p>
+        <a href="styles.html" class="btn-primary">Browse styles →</a>
+      </div>
+
+      <div class="style-thumbnails" aria-hidden="true">
+        <div class="style-thumb-placeholder" style="background:#1a1a2e"></div>
+        <div class="style-thumb-placeholder" style="background:#f4f4f0"></div>
+        <div class="style-thumb-placeholder" style="background:#0f1117"></div>
+        <div class="style-thumb-placeholder" style="background:#fff8f0"></div>
+        <div class="style-thumb-placeholder" style="background:#2d3561"></div>
+        <div class="style-thumb-placeholder" style="background:#0a0a0a"></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── PDF export steps ───────────────────────────────────────────── -->
+<section class="pdf-steps fade-in" id="pdf" aria-labelledby="pdf-heading">
+  <div class="container">
+    <div class="section-label">Export</div>
+    <h2 class="section-heading" id="pdf-heading">Save your deck as a PDF.</h2>
+    <p class="section-sub">Every deck renders to a local HTML file. One print command turns it into a crisp, one-slide-per-page PDF.</p>
+
+    <div class="pdf-step-grid" role="list">
+
+      <div class="pdf-step-item" role="listitem">
+        <div class="pdf-step-num" aria-hidden="true">01</div>
+        <div class="pdf-step-title">Open the deck</div>
+        <div class="pdf-step-desc">Claude tells you the file path. Open it directly in Chrome, Edge, Firefox, or Safari.</div>
+      </div>
+
+      <div class="pdf-step-item" role="listitem">
+        <div class="pdf-step-num" aria-hidden="true">02</div>
+        <div class="pdf-step-title">Print to PDF</div>
+        <div class="pdf-step-desc">Press <kbd style="font-family:inherit">Ctrl+P</kbd> (or <kbd style="font-family:inherit">⌘P</kbd> on Mac). Change the destination to "Save as PDF".</div>
+      </div>
+
+      <div class="pdf-step-item" role="listitem">
+        <div class="pdf-step-num" aria-hidden="true">03</div>
+        <div class="pdf-step-title">Check page settings</div>
+        <div class="pdf-step-desc">Set paper size to Custom (1280×720px) or Landscape A4. Margins: None. Background graphics: On.</div>
+      </div>
+
+      <div class="pdf-step-item" role="listitem">
+        <div class="pdf-step-num" aria-hidden="true">04</div>
+        <div class="pdf-step-title">Save</div>
+        <div class="pdf-step-desc">Each slide is exactly one page. The deck renders at full fidelity — fonts, colours, and layout preserved.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ───────────────────────────────────────────────────────── -->
+<section class="faq fade-in" id="faq" aria-labelledby="faq-heading">
+  <div class="container">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-heading" id="faq-heading">Common questions.</h2>
+
+    <div class="faq-list" role="list">
+
+      <details role="listitem">
+        <summary>Does this work with Claude.ai (the web version)?</summary>
+        <div class="faq-answer">
+          Yes. Download <code>quick-deck.md</code>, open a new conversation on Claude.ai, attach the file, and send <em>"Please follow the instructions in the attached file."</em> The deck is saved to your local machine when Claude writes the HTML output (Claude.ai's file download feature). This is Path B in the install guide above.
+        </div>
+      </details>
+
+      <details role="listitem">
+        <summary>Do I need a paid Claude subscription?</summary>
+        <div class="faq-answer">
+          You need whatever Claude access you already have — free or paid. quick-deck uses no external services or APIs. The only limit is your Claude session's context window, which free tiers handle fine for most decks.
+        </div>
+      </details>
+
+      <details role="listitem">
+        <summary>Can I update an existing presentation instead of building from scratch?</summary>
+        <div class="faq-answer">
+          Yes. When Claude asks "What type of presentation?" (Question 1), say you have an existing one and attach it. Claude will read the current slides and apply changes — rewriting copy, restyling, or adding slides — then save a new version file. The original is never overwritten.
+        </div>
+      </details>
+
+      <details role="listitem">
+        <summary>Where does the deck file go? Do I need a local server?</summary>
+        <div class="faq-answer">
+          Claude saves the deck as a plain <code>.html</code> file to your current working directory (or wherever you tell it to). No server needed — just open the file directly in your browser. The CSS and fonts are either inlined or loaded from a CDN, so it works completely offline after first load.
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── Footer ────────────────────────────────────────────────────── -->
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-left">
+      <span class="footer-wordmark">quick-deck</span>
+      <span class="footer-attr">Built on <a href="https://github.com/ItsssssJack/power-design" target="_blank" rel="noopener">Jack Roberts' power-design</a> (MIT). Free forever.</span>
+    </div>
+    <div class="footer-right">
+      <span class="footer-pill">Free forever · Open source</span>
+      <a class="footer-github" href="https://github.com/cwspoeticartistry/quick-deck" aria-label="GitHub repository" target="_blank" rel="noopener">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.745 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/>
+        </svg>
       </a>
     </div>
-
-    <div class="path-grid">
-
-      <!-- PATH A -->
-      <div class="path-card">
-        <h3>PATH A<br>CLAUDE CODE (CLI)</h3>
-        <ul class="steps">
-          <li>Download <code>quick-deck.md</code> above</li>
-          <li>
-            <strong>Mac / Linux:</strong><br>
-            Save it to:<br>
-            <code>~/.claude/skills/quick-deck/SKILL.md</code>
-          </li>
-          <li>
-            <strong>Windows:</strong><br>
-            Save it to:<br>
-            <code>%USERPROFILE%\.claude\skills\quick-deck\SKILL.md</code>
-          </li>
-          <li>Restart Claude Code (close + reopen, or type <code>/restart</code>)</li>
-          <li>In any project, type: <code>use quick-deck</code></li>
-        </ul>
-        <div class="copy-wrap" style="margin-top:20px;">
-          <div class="copy-label">QUICK INSTALL (Mac/Linux terminal)</div>
-          <div class="copy-block">
-            <pre>mkdir -p ~/.claude/skills/quick-deck
-curl -o ~/.claude/skills/quick-deck/SKILL.md \
-  https://cwspoeticartistry.github.io/quick-deck/quick-deck.md</pre>
-            <button class="copy-btn" onclick="copyText(this, 'mkdir -p ~/.claude/skills/quick-deck\ncurl -o ~/.claude/skills/quick-deck/SKILL.md \\\n  https://cwspoeticartistry.github.io/quick-deck/quick-deck.md')">COPY</button>
-          </div>
-        </div>
-        <div class="copy-wrap" style="margin-top:16px;">
-          <div class="copy-label">QUICK INSTALL (Windows PowerShell)</div>
-          <div class="copy-block">
-            <pre>$d = "$env:USERPROFILE\.claude\skills\quick-deck"
-New-Item -ItemType Directory -Force -Path $d
-Invoke-WebRequest https://cwspoeticartistry.github.io/quick-deck/quick-deck.md -OutFile "$d\SKILL.md"</pre>
-            <button class="copy-btn" onclick="copyText(this, '$d = &quot;$env:USERPROFILE\\.claude\\skills\\quick-deck&quot;\nNew-Item -ItemType Directory -Force -Path $d\nInvoke-WebRequest https://cwspoeticartistry.github.io/quick-deck/quick-deck.md -OutFile &quot;$d\\SKILL.md&quot;')">COPY</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- PATH B -->
-      <div class="path-card">
-        <h3>PATH B<br>CLAUDE DESKTOP / CLAUDE.AI</h3>
-        <ul class="steps">
-          <li>Download <code>quick-deck.md</code> above</li>
-          <li>Open Claude Desktop or go to <code>claude.ai</code></li>
-          <li>Start a <strong>new conversation</strong></li>
-          <li>Click the <strong>paperclip / attachment</strong> icon and attach <code>quick-deck.md</code></li>
-          <li>Send this message:</li>
-        </ul>
-        <div class="copy-wrap" style="margin-top:16px;">
-          <div class="copy-label">SEND THIS TO CLAUDE</div>
-          <div class="copy-block">
-            <pre>Please follow the instructions in the attached file.</pre>
-            <button class="copy-btn" onclick="copyText(this, 'Please follow the instructions in the attached file.')">COPY</button>
-          </div>
-        </div>
-        <p class="txt-dim" style="margin-top:16px;">Claude will read the skill file and immediately start the presentation intake conversation.</p>
-      </div>
-
-    </div><!-- /path-grid -->
-  </section>
-
-  <!-- ═══════════════════════════════════ SECTION 3 ══ -->
-  <section class="section" data-label="03 // THE CONVERSATION">
-    <h2>WHAT TO EXPECT</h2>
-    <p class="txt">Once the skill is active, Claude will ask you three questions:</p>
-
-    <div class="q-preview">
-      <div class="q-label">Q1 — TYPE</div>
-      <div class="q-text">"What type of presentation are you making? Do you have an existing one to redesign, an example to recreate, or do you want to build something new from scratch?"</div>
-    </div>
-
-    <div class="q-preview">
-      <div class="q-label">Q2 — STYLE</div>
-      <div class="q-text">"Is there a particular style you have in mind? Paste a link, browse the style gallery and paste a snippet, or just describe it in words."</div>
-    </div>
-
-    <div class="q-preview">
-      <div class="q-label">Q3 — ASSETS</div>
-      <div class="q-text">"Do you have any assets to include — logos, images, or an existing deck? Paste URLs or file paths, or say 'none'."</div>
-    </div>
-
-    <p class="txt" style="margin-top:24px;">After your answers, Claude will:</p>
-    <ul class="steps">
-      <li>Show you a <span class="accent">slide-by-slide outline</span> for approval</li>
-      <li>Once approved, render <code>./decks/&lt;name&gt;/v1.html</code> to your local folder</li>
-      <li>Tell you exactly where the file is and how to open it</li>
-      <li>Keep a <span class="accent">revision history</span> — every version saved, never overwritten</li>
-    </ul>
-  </section>
-
-  <!-- ═══════════════════════════════════ SECTION 4 ══ -->
-  <section class="section" data-label="04 // PICK A STYLE">
-    <h2>STYLE GALLERY</h2>
-    <p class="txt">Not sure what style to use? Browse 10 prebuilt presentation themes. Click any style to copy a prompt snippet, then paste it into Claude when it asks Q2.</p>
-
-    <a class="gallery-link" href="styles.html">
-      ★ OPEN STYLE GALLERY ★<br>
-      <span style="font-size:0.8em; opacity:0.7;">10 themes · click to copy · paste into Claude</span>
-    </a>
-
-    <p class="txt-dim">Or just describe the style in words — "bold and dark", "clean corporate", "luxury minimal" — and Claude will map it to the closest theme.</p>
-  </section>
-
-  <!-- ═══════════════════════════════════ SECTION 5 ══ -->
-  <section class="section" data-label="05 // EXPORT AS PDF">
-    <h2>SAVE YOUR DECK AS PDF</h2>
-    <p class="txt">Once Claude renders your <code>v1.html</code>, open it in your browser and print to PDF:</p>
-    <ul class="steps">
-      <li><strong>Chrome / Edge:</strong> <code>Ctrl+P</code> → select <span class="accent">"Save as PDF"</span> → enable <span class="accent">"Background graphics"</span> → Save</li>
-      <li><strong>Firefox:</strong> <code>Ctrl+P</code> → select <span class="accent">"Microsoft Print to PDF"</span> → Print</li>
-      <li><strong>Mac (any browser):</strong> <code>Cmd+P</code> → click <span class="accent">PDF</span> dropdown (bottom-left) → Save as PDF</li>
-    </ul>
-    <p class="txt-dim" style="margin-top:16px;">The template is built with <code>@page</code> CSS rules so every slide lands on its own page — no cropping, no bleed.</p>
-    <p class="txt-dim">To iterate: just tell Claude "make slide 4 a comparison table" and it will render <code>v2.html</code>. Previous versions are always kept.</p>
-  </section>
-
-  <!-- ═══════════════════════════════════ SECTION 6 ══ -->
-  <section class="section" data-label="06 // FAQ">
-    <h2>TROUBLESHOOTING</h2>
-    <ul class="steps">
-      <li><strong>Claude says it doesn't know "quick-deck":</strong> The skill file may not have saved correctly. Check the path and restart Claude Code.</li>
-      <li><strong>Fonts don't load in the HTML:</strong> You need an internet connection when opening the file (Google Fonts CDN). Once loaded, you can print to PDF offline.</li>
-      <li><strong>PDF has multiple slides per page:</strong> Make sure "Background graphics" is checked and you're not in "fit to page" scaling mode. Set scale to 100%.</li>
-      <li><strong>Claude Desktop / .ai doesn't follow the file:</strong> Try: "The file I attached is a skill instruction set. Please read it and start the presentation intake conversation as described."</li>
-      <li><strong>Can I use my own brand colors?</strong> Yes — when Claude asks Q2, paste your HEX codes: "Use bg #0a0a0a, heading #ffffff, accent #e63946, body font Inter."</li>
-    </ul>
-  </section>
-
-  <footer>
-    <p>quick-deck v1.0 · MIT · <a href="https://github.com/cwspoeticartistry/quick-deck">github.com/cwspoeticartistry/quick-deck</a></p>
-    <p style="margin-top:8px; font-size:14px;">Design principles: <a href="https://github.com/ItsssssJack/power-design">Jack Roberts / power-design</a> (MIT)</p>
-  </footer>
-
-</div>
+  </div>
+</footer>
 
 <script>
+// ── Card detail transitions ───────────────────────────────────────
+function openDetail(path) {
+  const grid = document.getElementById('card-grid');
+  const detailA = document.getElementById('detail-a');
+  const detailB = document.getElementById('detail-b');
+  const cardA = document.getElementById('card-a');
+  const cardB = document.getElementById('card-b');
+
+  // Hide grid
+  grid.classList.add('hidden');
+
+  // Close both details first
+  [detailA, detailB].forEach(d => {
+    d.classList.remove('active');
+    d.setAttribute('aria-hidden', 'true');
+  });
+  [cardA, cardB].forEach(c => c.setAttribute('aria-expanded', 'false'));
+
+  // Show requested detail
+  const detail = path === 'a' ? detailA : detailB;
+  const card   = path === 'a' ? cardA : cardB;
+
+  detail.classList.add('active');
+  detail.setAttribute('aria-hidden', 'false');
+  card.setAttribute('aria-expanded', 'true');
+
+  // Scroll to install section
+  document.getElementById('install').scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+  // Focus the back button
+  const back = detail.querySelector('.card-detail-back');
+  if (back) setTimeout(() => back.focus(), 100);
+}
+
+function closeDetail() {
+  const grid = document.getElementById('card-grid');
+  const details = document.querySelectorAll('.card-detail');
+  const cards   = document.querySelectorAll('.install-card');
+
+  details.forEach(d => { d.classList.remove('active'); d.setAttribute('aria-hidden', 'true'); });
+  cards.forEach(c => c.setAttribute('aria-expanded', 'false'));
+  grid.classList.remove('hidden');
+}
+
+// ── Tab switch (Mac / Windows path) ──────────────────────────────
+function switchTab(tabEl, showId) {
+  const tabs = tabEl.closest('.copy-tabs').querySelectorAll('.copy-tab');
+  tabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
+  tabEl.classList.add('active');
+  tabEl.setAttribute('aria-selected', 'true');
+
+  // Hide sibling copy blocks and show target
+  const blocks = ['path-mac', 'path-win'];
+  blocks.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.style.display = (id === showId) ? 'flex' : 'none';
+  });
+}
+
+// ── Clipboard copy ────────────────────────────────────────────────
 function copyText(btn, text) {
-  navigator.clipboard.writeText(text).then(() => {
-    btn.textContent = 'COPIED!';
-    btn.classList.add('copied');
-    setTimeout(() => { btn.textContent = 'COPY'; btn.classList.remove('copied'); }, 2000);
-  }).catch(() => {
-    // Fallback for older browsers
+  const label = btn.textContent;
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(() => feedback(btn, label));
+  } else {
     const ta = document.createElement('textarea');
     ta.value = text;
-    ta.style.position = 'fixed';
-    ta.style.opacity = '0';
+    ta.style.cssText = 'position:fixed;opacity:0;';
     document.body.appendChild(ta);
     ta.select();
     document.execCommand('copy');
     document.body.removeChild(ta);
-    btn.textContent = 'COPIED!';
-    btn.classList.add('copied');
-    setTimeout(() => { btn.textContent = 'COPY'; btn.classList.remove('copied'); }, 2000);
-  });
+    feedback(btn, label);
+  }
 }
+
+function feedback(btn, original) {
+  btn.textContent = 'Copied ✓';
+  btn.classList.add('copied');
+  btn.setAttribute('aria-label', 'Copied to clipboard');
+  setTimeout(() => {
+    btn.textContent = original;
+    btn.classList.remove('copied');
+    btn.setAttribute('aria-label', 'Copy to clipboard');
+  }, 2000);
+}
+
+// ── Scroll fade-in ────────────────────────────────────────────────
+(function () {
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduced) {
+    document.querySelectorAll('.fade-in').forEach(el => el.classList.add('visible'));
+    return;
+  }
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -32px 0px' });
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+})();
 </script>
+
 </body>
 </html>
