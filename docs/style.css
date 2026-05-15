@@ -1,0 +1,219 @@
+/* quick-deck setup site — shared CRT/arcade theme */
+
+@import url('https://fonts.googleapis.com/css2?family=VT323&family=Press+Start+2P&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  min-height: 100vh;
+  background: radial-gradient(ellipse at center, #141414 0%, #050505 70%, #000 100%);
+  font-family: 'VT323', 'Courier New', monospace;
+  color: #00ff66;
+  overflow-x: hidden;
+}
+
+/* ── SCANLINE OVERLAY ── */
+body::before {
+  content: "";
+  position: fixed; inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0,0,0,0) 0px, rgba(0,0,0,0) 2px,
+    rgba(0,0,0,0.12) 3px, rgba(0,0,0,0) 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ── LAYOUT ── */
+.page { max-width: 860px; margin: 0 auto; padding: 48px 24px 96px; }
+
+/* ── HEADER ── */
+.site-header {
+  text-align: center;
+  border-bottom: 2px solid #00ff66;
+  padding-bottom: 32px;
+  margin-bottom: 48px;
+}
+.site-title {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 18px;
+  letter-spacing: 4px;
+  color: #66ff99;
+  line-height: 1.4;
+  text-shadow: 0 0 12px #00ff66, 0 0 24px rgba(0,255,102,0.4);
+}
+.site-sub {
+  font-size: 22px;
+  color: #aaffcc;
+  margin-top: 16px;
+  opacity: 0.8;
+}
+
+/* ── SECTION ── */
+.section {
+  margin-bottom: 48px;
+  border: 1px solid rgba(0,255,102,0.3);
+  padding: 32px;
+  background: rgba(0,255,102,0.02);
+  position: relative;
+}
+.section::before {
+  content: attr(data-label);
+  position: absolute;
+  top: -14px; left: 24px;
+  background: #050505;
+  padding: 0 12px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: #00ff66;
+}
+.section h2 {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: #66ff99;
+  margin-bottom: 24px;
+  line-height: 1.6;
+}
+
+/* ── TEXT ── */
+.txt     { font-size: 22px; line-height: 1.55; color: #c8ffd8; margin-bottom: 12px; }
+.txt-dim { font-size: 20px; line-height: 1.5;  color: #88bb99; margin-bottom: 12px; }
+.accent  { color: #c9a14a; }
+.green   { color: #00ff66; }
+
+/* ── STEPS ── */
+.steps { list-style: none; display: flex; flex-direction: column; gap: 16px; padding: 0; }
+.steps li { font-size: 20px; color: #c8ffd8; line-height: 1.5; }
+.steps li::before { content: "▸ "; color: #00ff66; }
+code, .code {
+  font-family: 'VT323', monospace;
+  background: rgba(0,255,102,0.08);
+  border: 1px solid rgba(0,255,102,0.25);
+  padding: 2px 8px;
+  font-size: 20px;
+  color: #aaffcc;
+}
+
+/* ── COPY BLOCK ── */
+.copy-wrap { margin: 20px 0; }
+.copy-label { font-size: 16px; color: #88bb99; letter-spacing: 2px; margin-bottom: 8px; }
+.copy-block {
+  position: relative;
+  background: rgba(0,0,0,0.5);
+  border: 1px solid rgba(0,255,102,0.4);
+  padding: 16px;
+  font-size: 18px;
+  color: #aaffcc;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+.copy-block pre { white-space: pre-wrap; word-break: break-all; }
+.copy-btn {
+  position: absolute;
+  top: 10px; right: 10px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 7px;
+  letter-spacing: 1px;
+  background: rgba(0,255,102,0.15);
+  border: 1px solid #00ff66;
+  color: #00ff66;
+  padding: 6px 10px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.copy-btn:hover { background: rgba(0,255,102,0.3); }
+.copy-btn.copied { color: #c9a14a; border-color: #c9a14a; }
+
+/* ── DOWNLOAD BUTTON ── */
+.dl-btn {
+  display: inline-block;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+  background: rgba(0,255,102,0.12);
+  border: 2px solid #00ff66;
+  color: #00ff66;
+  padding: 14px 24px;
+  text-decoration: none;
+  cursor: pointer;
+  margin: 16px 0;
+  line-height: 1.6;
+  box-shadow: 0 0 12px rgba(0,255,102,0.2);
+  transition: background 0.15s, box-shadow 0.15s;
+}
+.dl-btn:hover {
+  background: rgba(0,255,102,0.25);
+  box-shadow: 0 0 20px rgba(0,255,102,0.4);
+  color: #66ff99;
+}
+
+/* ── PATH TABS ── */
+.path-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 16px; }
+.path-card {
+  border: 1px solid rgba(0,255,102,0.35);
+  padding: 20px;
+  background: rgba(0,0,0,0.3);
+}
+.path-card h3 {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  letter-spacing: 2px;
+  color: #c9a14a;
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
+@media (max-width: 600px) {
+  .path-grid { grid-template-columns: 1fr; }
+  .site-title { font-size: 12px; }
+}
+
+/* ── STYLE LINK BUTTON ── */
+.gallery-link {
+  display: block;
+  text-align: center;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  border: 2px solid #c9a14a;
+  color: #c9a14a;
+  padding: 20px;
+  text-decoration: none;
+  margin: 24px 0;
+  background: rgba(201,161,74,0.06);
+  transition: background 0.15s;
+  line-height: 1.6;
+}
+.gallery-link:hover { background: rgba(201,161,74,0.15); }
+
+/* ── Q PREVIEW ── */
+.q-preview {
+  border-left: 3px solid #00ff66;
+  padding: 16px 20px;
+  margin: 16px 0;
+  background: rgba(0,255,102,0.03);
+}
+.q-preview .q-label {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  color: #c9a14a;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+.q-preview .q-text { font-size: 19px; color: #c8ffd8; line-height: 1.5; }
+
+/* ── FOOTER ── */
+footer {
+  text-align: center;
+  padding: 32px 0;
+  font-size: 16px;
+  color: #447755;
+  border-top: 1px solid rgba(0,255,102,0.15);
+  margin-top: 48px;
+  letter-spacing: 2px;
+}
+footer a { color: #447755; text-decoration: none; }
+footer a:hover { color: #00ff66; }
