@@ -697,10 +697,13 @@ function feedback(btn, original) {
       }
 
       // Sync active index to whichever device is nearest the front
-      var newActive = (Math.round(-rot / STEP) % TOTAL + TOTAL) % TOTAL;
-      if (newActive !== activeIdx) {
-        activeIdx = newActive;
-        syncNav();
+      // Only sync activeIdx from rotation on desktop — mobile uses scroll events
+      if (window.innerWidth >= 768) {
+        var newActive = (Math.round(-rot / STEP) % TOTAL + TOTAL) % TOTAL;
+        if (newActive !== activeIdx) {
+          activeIdx = newActive;
+          syncNav();
+        }
       }
     }
     requestAnimationFrame(frame);
@@ -718,9 +721,27 @@ function feedback(btn, original) {
     }
   }
 
-  // ── Snap to device n (shortest arc) ──────────────────────────
+  // ── Mobile helpers ────────────────────────────────────────────
+  var CARD_W = 340; // 320px card + 20px gap
+
+  function updateMobileActive() {
+    devices.forEach(function(d, i) {
+      d.classList.toggle('mobile-active', i === activeIdx);
+    });
+  }
+
+  // ── Snap to device n ─────────────────────────────────────────
   function snapTo(n) {
     n = ((n % TOTAL) + TOTAL) % TOTAL;
+    if (window.innerWidth < 768 && stage) {
+      // Mobile: scroll the stage to centre card n
+      stage.scrollTo({ left: n * CARD_W, behavior: 'smooth' });
+      activeIdx = n;
+      syncNav();
+      updateMobileActive();
+      return;
+    }
+    // Desktop: shortest-arc 3D rotation
     var canonical = -n * STEP;
     var rawDiff   = ((canonical - rot) % 360 + 360) % 360;
     var adj       = rawDiff > 180 ? rawDiff - 360 : rawDiff;
@@ -792,6 +813,11 @@ function feedback(btn, original) {
 
   function handleDeviceClick(idx) {
     if (zoomed) return;
+    if (window.innerWidth < 768) {
+      // Mobile: tap on the active card zooms; tap on a side card scrolls to it
+      if (idx === activeIdx) { openZoom(); } else { snapTo(idx); }
+      return;
+    }
     if (idx === activeIdx) {
       openZoom();
     } else {
@@ -812,6 +838,7 @@ function feedback(btn, original) {
   var touchX = 0;
   var touchY = 0;
   if (stage) {
+    // Touch swipe on desktop (for completeness)
     stage.addEventListener('touchstart', function(e) {
       touchX = e.touches[0].clientX;
       touchY = e.touches[0].clientY;
@@ -823,7 +850,26 @@ function feedback(btn, original) {
         cycle(dx < 0 ? 1 : -1);
       }
     }, { passive: true });
+
+    // Mobile: sync active card from scroll position + update visual state
+    var scrollTimer = null;
+    stage.addEventListener('scroll', function() {
+      if (window.innerWidth >= 768) return;
+      clearTimeout(scrollTimer);
+      scrollTimer = setTimeout(function() {
+        var n = Math.round(stage.scrollLeft / CARD_W);
+        n = Math.max(0, Math.min(TOTAL - 1, n));
+        if (n !== activeIdx) {
+          activeIdx = n;
+          syncNav();
+        }
+        updateMobileActive();
+      }, 80);
+    }, { passive: true });
   }
+
+  // Initialise mobile active state
+  if (window.innerWidth < 768) updateMobileActive();
 
   document.addEventListener('keydown', function (e) {
     if (zoomed) {
