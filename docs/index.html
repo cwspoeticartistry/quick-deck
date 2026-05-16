@@ -58,20 +58,22 @@
 <!-- ── Hero ─────────────────────────────────────────────────────── -->
 <div class="hero-wrap">
 <section class="hero" id="main">
-  <!-- Background video — muted autoplay loop; poster shown until video loads -->
-  <video class="hero-video" id="hero-video" autoplay loop muted playsinline poster="hero-poster.jpg" aria-hidden="true">
+  <!-- Hero video — starts paused; controls shown after play button click -->
+  <video class="hero-video" id="hero-video" playsinline poster="hero-poster.jpg" preload="metadata">
     <source src="hero.mp4" type="video/mp4">
   </video>
   <!-- Dark scrim so text stays legible over the video -->
   <div class="hero-scrim" aria-hidden="true"></div>
-  <!-- Text overlay — fades out once video starts playing -->
+  <!-- Text overlay with frosted glass card — fades out when video plays -->
   <div class="hero-text-overlay" id="hero-overlay">
     <div class="container">
-      <span class="hero-eyebrow">Claude Skill</span>
-      <h1>The fastest way to build a beautiful presentation in any Claude.</h1>
-      <p class="hero-sub">Answer three questions. Get a browser-ready HTML deck. Print to PDF in one keystroke. No API keys, no installs beyond Claude itself.</p>
-      <div class="hero-actions">
-        <button id="play-video-btn" class="btn-ghost">▶ Play video</button>
+      <div class="hero-glass-card">
+        <span class="hero-eyebrow">Claude Skill</span>
+        <h1>The fastest way to build a beautiful presentation in any Claude.</h1>
+        <p class="hero-sub">Answer three questions. Get a browser-ready HTML deck. Print to PDF in one keystroke. No API keys, no installs beyond Claude itself.</p>
+        <div class="hero-actions">
+          <button id="play-video-btn" class="btn-ghost">▶ Play video</button>
+        </div>
       </div>
     </div>
   </div>
@@ -661,7 +663,7 @@ function feedback(btn, original) {
       // Smooth lerp toward target
       var diff = targetRot - rot;
       if (Math.abs(diff) > 0.05) {
-        rot += diff * 0.09;
+        rot += diff * 0.07;
       } else {
         rot = targetRot;
       }
@@ -868,6 +870,30 @@ function feedback(btn, original) {
     }, { passive: true });
   }
 
+  // ── Desktop mouse/pointer drag to rotate carousel ────────────────
+  var dragStartX = 0, dragStartRot = 0, isDragging = false;
+  if (stage) {
+    stage.addEventListener('pointerdown', function(e) {
+      if (window.innerWidth < 768) return;
+      isDragging = true;
+      dragStartX = e.clientX;
+      dragStartRot = targetRot;
+      stage.setPointerCapture(e.pointerId);
+    });
+    stage.addEventListener('pointermove', function(e) {
+      if (!isDragging || window.innerWidth < 768) return;
+      var dx = e.clientX - dragStartX;
+      targetRot = dragStartRot + dx * 0.35;
+    });
+    stage.addEventListener('pointerup', function(e) {
+      if (!isDragging || window.innerWidth < 768) return;
+      isDragging = false;
+      var nearest = (Math.round(-targetRot / STEP) % TOTAL + TOTAL) % TOTAL;
+      snapTo(nearest);
+    });
+    stage.addEventListener('pointercancel', function() { isDragging = false; });
+  }
+
   // Initialise mobile active state
   if (window.innerWidth < 768) updateMobileActive();
 
@@ -955,30 +981,18 @@ function feedback(btn, original) {
   });
 })();
 
-// ── Hero video — Play button triggers overlay fade ────────────────
+// ── Hero video — Play button fades overlay and starts video with controls ─
 (function () {
   var video   = document.getElementById('hero-video');
   var overlay = document.getElementById('hero-overlay');
   var playBtn = document.getElementById('play-video-btn');
   if (!video || !overlay || !playBtn) return;
 
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    video.removeAttribute('autoplay');
-    playBtn.style.display = 'none';
-    return;
-  }
-
   playBtn.addEventListener('click', function () {
-    video.loop = false;
+    video.controls = true;
     video.currentTime = 0;
     video.play();
     overlay.classList.add('hero-text-overlay--fade');
-  });
-
-  video.addEventListener('ended', function () {
-    video.loop = true;
-    video.play();
-    overlay.classList.remove('hero-text-overlay--fade');
   });
 })();
 </script>

@@ -264,9 +264,9 @@ body.menu-open { overflow: hidden; }
 
 .hero {
   position: sticky;
-  top: 0;
-  height: 100vh;
-  min-height: 600px;
+  top: 64px; /* stick right below the nav (nav-inner height = 64px) */
+  height: calc(100vh - 64px);
+  min-height: 540px;
   z-index: 1;
   overflow: hidden;
   display: flex;
@@ -346,6 +346,23 @@ body.menu-open { overflow: hidden; }
 .hero-text-overlay--fade {
   opacity: 0;
   pointer-events: none;
+}
+
+/* ── Frosted glass card behind hero copy ─────────────────────────── */
+.hero-glass-card {
+  background: rgba(10, 8, 6, 0.38);
+  backdrop-filter: blur(22px) saturate(1.3);
+  -webkit-backdrop-filter: blur(22px) saturate(1.3);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 24px;
+  padding: 48px 56px;
+  max-width: 640px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+@media (max-width: 600px) {
+  .hero-glass-card { padding: 32px 24px; border-radius: 16px; }
 }
 
 .hero-text-overlay .btn-ghost {
@@ -1020,6 +1037,8 @@ body.menu-open { overflow: hidden; }
 
 /* ── Footer ──────────────────────────────────────────────────────── */
 .site-footer {
+  position: relative;
+  z-index: 2;
   background: var(--bg-invert);
   padding: 48px 0;
 }
@@ -1245,14 +1264,14 @@ body.menu-open { overflow: hidden; }
   .gallery-hero h1 { font-size: 36px; }
 
   /* Hero: drop sticky on tablet — avoid covering content on small screens */
-  .hero { position: relative; height: auto; min-height: 80vh; }
+  .hero { position: relative; top: 0; height: auto; min-height: 80vh; }
   .carousel-section { border-top-left-radius: 0; border-top-right-radius: 0; box-shadow: none; }
 }
 
 @media (max-width: 479px) {
   :root { --pad-x: 16px; }
 
-  .hero { position: relative; height: auto; min-height: 70vh; }
+  .hero { position: relative; top: 0; height: auto; min-height: 70vh; }
   .hero h1 { font-size: 32px; }
   .hero-sub { font-size: 16px; }
   .section-heading { font-size: 28px; }
@@ -1266,6 +1285,9 @@ body.menu-open { overflow: hidden; }
 
 /* ── Bonus skills section ────────────────────────────────────────── */
 .bonus-skills {
+  position: relative;
+  z-index: 2;      /* must sit above the sticky hero (z-index: 1) */
+  background: var(--bg);
   padding: 80px 0;
   border-bottom: 1px solid var(--rule);
 }
@@ -1437,6 +1459,7 @@ body.menu-open { overflow: hidden; }
 .carousel-section {
   position: relative;
   z-index: 2;
+  margin-top: -100vh; /* pull carousel up so it slides over the sticky hero immediately */
   padding: 80px 0 56px;
   border-bottom: 1px solid var(--rule);
   overflow: hidden;
@@ -1463,7 +1486,7 @@ body.menu-open { overflow: hidden; }
   height: 0;
   transform: translate(-50%, -50%) rotateX(var(--tilt, 0deg)) rotateY(var(--rotation, 0deg));
   transform-style: preserve-3d;
-  transition: transform 600ms cubic-bezier(0.2, 0.6, 0.2, 1);
+  /* No CSS transition — JS lerp (0.07 factor) drives the smooth animation */
 }
 
 /* Each device on the cylinder — --idx set via inline style */
@@ -1473,7 +1496,7 @@ body.menu-open { overflow: hidden; }
   top: -150px;
   left: -240px;
   width: 480px;
-  transform: rotateY(calc(var(--idx, 0) * 60deg)) translateZ(480px);
+  transform: rotateY(calc(var(--idx, 0) * 72deg)) translateZ(480px);
   cursor: pointer;
   will-change: opacity, filter;
 }
@@ -1651,6 +1674,7 @@ body.zoom-active { overflow: hidden; }
 /* ── Hero-wrap: no extra height on mobile (parallax is desktop-only) */
 @media (max-width: 767px) {
   .hero-wrap { height: auto; }
+  .carousel-section { margin-top: 0; }
 }
 
 /* ── Carousel mobile — horizontal scroll snap ────────────────────── */
