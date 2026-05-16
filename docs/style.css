@@ -156,6 +156,11 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 .nav-toggle { display: none; }
 
 /* ── Hero ────────────────────────────────────────────────────────── */
+.hero-wrap {
+  height: 200vh;
+  position: relative;
+}
+
 .hero {
   position: sticky;
   top: 0;
@@ -1390,16 +1395,24 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   z-index: 200 !important;
   transform: none !important;
   cursor: default;
-  animation: deviceFadeIn 280ms cubic-bezier(0.2, 0.6, 0.2, 1) forwards;
-  /* The outer .device shell must not eat clicks meant for inner content.
-     Children (device-frame and below) restore pointer-events via the rule below. */
+  animation: deviceZoomIn 300ms cubic-bezier(0.2, 0.6, 0.2, 1) forwards;
   pointer-events: none;
 }
 .device--focused .device-frame { pointer-events: auto; }
 
-@keyframes deviceFadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+.device--closing {
+  animation: deviceZoomOut 280ms cubic-bezier(0.4, 0, 0.8, 0.4) forwards !important;
+  pointer-events: none !important;
+}
+
+@keyframes deviceZoomIn {
+  from { opacity: 0; transform: scale(0.12); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes deviceZoomOut {
+  from { opacity: 1; transform: scale(1); }
+  to   { opacity: 0; transform: scale(0.12); }
 }
 
 .device--focused .device-frame {

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>quick-deck — Build beautiful presentations with any Claude</title>
+  <title>CWS Presentation Maker — Build beautiful presentations with any Claude</title>
   <meta name="description" content="A free, portable skill for Claude. Answer three questions, get a browser-ready HTML presentation. Works with Claude Code, Claude Desktop, and Claude.ai. No API keys.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,11 +16,11 @@
 <!-- ── Nav ──────────────────────────────────────────────────────── -->
 <nav class="site-nav" aria-label="Site navigation">
   <div class="nav-inner">
-    <a class="nav-wordmark" href="#main">quick-deck</a>
+    <a class="nav-wordmark" href="#main">CWS Presentation Maker</a>
     <ul class="nav-links" role="list">
-      <li><a href="#tour">Install</a></li>
-      <li><a href="#tour">Styles</a></li>
-      <li><a href="#tour">FAQ</a></li>
+      <li><a href="https://claude.ai/referral/t8Pl3b-rXg" target="_blank" rel="noopener">Install</a></li>
+      <li><a href="styles.html">Styles</a></li>
+      <li><a href="#faq">Ask Me</a></li>
     </ul>
     <a class="nav-github" href="https://github.com/cwspoeticartistry/quick-deck" aria-label="View on GitHub" target="_blank" rel="noopener">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -31,6 +31,7 @@
 </nav>
 
 <!-- ── Hero ─────────────────────────────────────────────────────── -->
+<div class="hero-wrap">
 <section class="hero" id="main">
   <!-- Background video — muted autoplay loop; poster shown until video loads -->
   <video class="hero-video" autoplay loop muted playsinline poster="hero-poster.jpg" aria-hidden="true">
@@ -45,12 +46,13 @@
       <h1>The fastest way to build a beautiful presentation in any Claude.</h1>
       <p class="hero-sub">Answer three questions. Get a browser-ready HTML deck. Print to PDF in one keystroke. No API keys, no installs beyond Claude itself.</p>
       <div class="hero-actions">
-        <a href="#tour" class="btn-primary">Get the skill ↓</a>
+        <a href="https://claude.ai/referral/t8Pl3b-rXg" target="_blank" rel="noopener" class="btn-primary">Get the skill ↓</a>
         <a href="styles.html" class="btn-ghost">See styles →</a>
       </div>
     </div>
   </div>
 </section>
+</div>
 
 <!-- ── Zoom back button (fixed, hidden until zoom is open) ────────── -->
 <button class="device-zoom-back" id="zoom-back" aria-label="Back to carousel">
@@ -415,48 +417,30 @@
         </div>
       </div>
 
-      <!-- ── Device 5: FAQ ───────────────────────────────────────── -->
+      <!-- ── Device 5: Ask Me ──────────────────────────────────────── -->
       <div class="device" data-index="5" style="--idx:5" id="faq"
-           tabindex="0" role="button" aria-label="Open FAQ"
+           tabindex="0" role="button" aria-label="Open Ask Me"
            onclick="handleDeviceClick(5)"
            onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();handleDeviceClick(5)}">
         <div class="device-frame">
           <div class="device-bar">
             <div class="device-dots"><span class="device-dot"></span><span class="device-dot"></span><span class="device-dot"></span></div>
-            <span class="device-url">faq</span>
+            <span class="device-url">ask me</span>
           </div>
           <div class="device-content-wrap">
             <div class="device-content">
               <section class="faq" aria-labelledby="faq-heading">
                 <div class="container">
-                  <div class="section-label">FAQ</div>
-                  <h2 class="section-heading" id="faq-heading">Common questions.</h2>
-                  <div class="faq-list" role="list">
-                    <details role="listitem">
-                      <summary>Does this work with Claude.ai (the web version)?</summary>
-                      <div class="faq-answer">
-                        Yes. Download <code>quick-deck.md</code>, open a new conversation on Claude.ai, attach the file, and send <em>"Please follow the instructions in the attached file."</em> The deck is saved to your local machine when Claude writes the HTML output. This is Path B in the install guide.
-                      </div>
-                    </details>
-                    <details role="listitem">
-                      <summary>Do I need a paid Claude subscription?</summary>
-                      <div class="faq-answer">
-                        You need whatever Claude access you already have — free or paid. quick-deck uses no external services or APIs. The only limit is your Claude session's context window, which free tiers handle fine for most decks.
-                      </div>
-                    </details>
-                    <details role="listitem">
-                      <summary>Can I update an existing presentation instead of building from scratch?</summary>
-                      <div class="faq-answer">
-                        Yes. When Claude asks "What type of presentation?" (Question 1), say you have an existing one and attach it. Claude will read the current slides and apply changes — rewriting copy, restyling, or adding slides — then save a new version file. The original is never overwritten.
-                      </div>
-                    </details>
-                    <details role="listitem">
-                      <summary>Where does the deck file go? Do I need a local server?</summary>
-                      <div class="faq-answer">
-                        Claude saves the deck as a plain <code>.html</code> file to your current working directory (or wherever you tell it to). No server needed — just open the file directly in your browser. The CSS and fonts are either inlined or loaded from a CDN, so it works completely offline after first load.
-                      </div>
-                    </details>
-                  </div>
+                  <div class="section-label">Ask Me</div>
+                  <h2 class="section-heading" id="faq-heading">Got a question?</h2>
+                  <p style="font-family:Inter,sans-serif;font-size:15px;color:var(--ink-mute);margin-bottom:28px;line-height:1.6">Send a WhatsApp message and I'll personally help you get your presentation made.</p>
+                  <a href="https://wa.me/27645439376?text=Ceehle%2C%20could%20you%20help%20me%20with%20"
+                     target="_blank" rel="noopener"
+                     style="display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#fff;font-family:Inter,sans-serif;font-size:15px;font-weight:600;padding:14px 24px;border-radius:10px;text-decoration:none;margin-bottom:20px">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.128.558 4.121 1.524 5.849L0 24l6.335-1.509A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-5.006-1.367l-.359-.214-3.72.886.93-3.617-.234-.373A9.818 9.818 0 1 1 12 21.818z"/></svg>
+                    Chat on WhatsApp
+                  </a>
+                  <p style="font-family:Inter,sans-serif;font-size:13px;color:var(--ink-mute)">Start your message with: <em>"Ceehle, could you help me with…"</em></p>
                 </div>
               </section>
             </div>
@@ -478,7 +462,7 @@
       <button class="carousel-dot-btn"        role="tab" aria-selected="false" aria-label="Conversation"      onclick="setActive(2)"></button>
       <button class="carousel-dot-btn"        role="tab" aria-selected="false" aria-label="Styles gallery"    onclick="setActive(3)"></button>
       <button class="carousel-dot-btn"        role="tab" aria-selected="false" aria-label="PDF export"        onclick="setActive(4)"></button>
-      <button class="carousel-dot-btn"        role="tab" aria-selected="false" aria-label="FAQ"               onclick="setActive(5)"></button>
+      <button class="carousel-dot-btn"        role="tab" aria-selected="false" aria-label="Ask Me"             onclick="setActive(5)"></button>
     </div>
     <span class="carousel-counter" id="carousel-counter" aria-live="polite" aria-atomic="true">01 / 06</span>
     <button class="carousel-arrow carousel-arrow--next" onclick="cycle(1)" aria-label="Next screen">
@@ -560,7 +544,7 @@
 <footer class="site-footer" role="contentinfo">
   <div class="footer-inner">
     <div class="footer-left">
-      <span class="footer-wordmark">quick-deck</span>
+      <span class="footer-wordmark">CWS Presentation Maker</span>
       <span class="footer-attr">Built by CWS Poetic Artistry inspired by <a href="https://github.com/ItsssssJack/power-design" target="_blank" rel="noopener">Jack Roberts' power-design</a> (MIT). Free forever.</span>
     </div>
     <div class="footer-right">
@@ -663,7 +647,7 @@ function feedback(btn, original) {
 (function () {
   var TOTAL  = 6;
   var STEP   = 360 / TOTAL;   // 60° per device
-  var AUTO   = 0.04;          // degrees/frame when idle (slow, calm rotation)
+  var AUTO   = -0.04;         // degrees/frame when idle (slow, calm rotation — negative = forward step order)
 
   var rot       = 0;          // current visual rotation (degrees, grows freely)
   var targetRot = 0;          // lerp target
@@ -800,25 +784,32 @@ function feedback(btn, original) {
     }
   }
 
+  var closingAnim = false;
+
   function closeZoom() {
-    zoomed    = false;
-    targetRot = rot; // re-sync so next snapTo doesn't jump
-    if (zoomedDevice) {
-      zoomedDevice.classList.remove('device--focused');
-      // Restore to its original slot in the carousel track
+    if (!zoomedDevice || closingAnim) return;
+    closingAnim = true;
+    // Kick off zoom-out animation, then restore device to carousel
+    zoomedDevice.classList.add('device--closing');
+    var closing = zoomedDevice;
+    setTimeout(function () {
+      closingAnim   = false;
+      zoomed        = false;
+      targetRot     = rot;
+      closing.classList.remove('device--focused');
+      closing.classList.remove('device--closing');
       if (zoomPlaceholder && zoomPlaceholder.parentNode) {
-        zoomPlaceholder.parentNode.insertBefore(zoomedDevice, zoomPlaceholder);
+        zoomPlaceholder.parentNode.insertBefore(closing, zoomPlaceholder);
         zoomPlaceholder.parentNode.removeChild(zoomPlaceholder);
       }
       zoomPlaceholder = null;
-      var restored = zoomedDevice;
-      zoomedDevice  = null;
-      setTimeout(function () { if (restored) restored.focus(); }, 50);
-    }
-    document.body.classList.remove('zoom-active');
-    if (backBtn) backBtn.style.display = 'none';
-    clearTimeout(idleTimer);
-    idleTimer = setTimeout(function () { idle = true; }, 2500);
+      zoomedDevice    = null;
+      document.body.classList.remove('zoom-active');
+      if (backBtn) backBtn.style.display = 'none';
+      clearTimeout(idleTimer);
+      idleTimer = setTimeout(function () { idle = true; }, 2500);
+      setTimeout(function () { if (closing) closing.focus(); }, 50);
+    }, 280);
   }
 
   function handleDeviceClick(idx) {
