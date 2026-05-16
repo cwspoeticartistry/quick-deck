@@ -148,10 +148,11 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   justify-self: center;
 }
 .nav-logo:hover { color: var(--coral-deep); }
-.nav-logo-svg {
-  width: 64px;
-  height: 28px;
+.nav-logo-img {
+  height: 32px;
+  width: auto;
   display: block;
+  filter: brightness(0);
 }
 
 /* Right: spacer keeps grid balanced */
@@ -328,6 +329,17 @@ body.menu-open { overflow: hidden; }
   z-index: 1;
   background: linear-gradient(180deg, rgba(0,0,0,0.22) 0%, rgba(0,0,0,0.52) 100%);
   pointer-events: none;
+}
+
+/* hero-video-section: fills the whole hero on desktop */
+.hero-video-section {
+  position: absolute;
+  inset: 0;
+}
+
+/* Mobile play button: hidden on desktop, shown in mobile media query */
+.play-btn-mobile {
+  display: none;
 }
 
 .hero-text-overlay {
@@ -1263,15 +1275,12 @@ body.menu-open { overflow: hidden; }
   .section-heading { font-size: 32px; }
   .gallery-hero h1 { font-size: 36px; }
 
-  /* Hero: drop sticky on tablet — avoid covering content on small screens */
-  .hero { position: relative; top: 0; height: auto; min-height: 80vh; }
   .carousel-section { border-top-left-radius: 0; border-top-right-radius: 0; box-shadow: none; }
 }
 
 @media (max-width: 479px) {
   :root { --pad-x: 16px; }
 
-  .hero { position: relative; top: 0; height: auto; min-height: 70vh; }
   .hero h1 { font-size: 32px; }
   .hero-sub { font-size: 16px; }
   .section-heading { font-size: 28px; }
@@ -1671,10 +1680,110 @@ body.zoom-active { overflow: hidden; }
   text-align: center;
 }
 
-/* ── Hero-wrap: no extra height on mobile (parallax is desktop-only) */
+/* ── Mobile hero: video on top, text below, parallax preserved ───── */
 @media (max-width: 767px) {
-  .hero-wrap { height: auto; }
-  .carousel-section { margin-top: 0; }
+  /* Keep hero-wrap at 200vh and carousel at -100vh so parallax works */
+
+  /* Hero becomes a vertical flex column */
+  .hero {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-height: unset;
+    overflow: visible;
+    background: var(--bg);
+    align-items: stretch;
+  }
+
+  /* Video section: full-width, 16:9 */
+  .hero-video-section {
+    position: relative;
+    inset: unset;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+
+  /* Video fills its section container */
+  .hero-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Scrim hidden — text is below the video, not over it */
+  .hero-scrim { display: none; }
+
+  /* Mobile play button: centered over the video */
+  .play-btn-mobile {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.92);
+    border: none;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: #000;
+    z-index: 10;
+    transition: opacity 400ms ease;
+  }
+  .play-btn-mobile.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* Text overlay: flow below the video, not absolutely positioned */
+  .hero-text-overlay {
+    position: static;
+    inset: unset;
+    padding: 28px 20px 32px;
+    display: block;
+    text-align: left;
+    background: var(--bg);
+    transition: none;
+  }
+  /* Never fade the text overlay on mobile — only the play button fades */
+  .hero-text-overlay.hero-text-overlay--fade {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* Strip glass morphism card on mobile */
+  .hero-glass-card {
+    background: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    max-width: 100%;
+    text-align: left;
+  }
+
+  /* Text colors for light (non-video) background */
+  .hero h1 {
+    color: var(--ink-strong);
+    text-shadow: none;
+    max-width: 100%;
+    margin: 0 0 16px;
+  }
+  .hero-sub {
+    color: var(--ink);
+    margin: 0 0 28px;
+    max-width: 100%;
+  }
+
+  /* Hide desktop play button on mobile */
+  #play-video-btn { display: none; }
 }
 
 /* ── Carousel mobile — horizontal scroll snap ────────────────────── */

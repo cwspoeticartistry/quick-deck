@@ -20,9 +20,7 @@
       <span></span><span></span><span></span>
     </button>
     <a class="nav-logo" href="https://www.cwspa.co.za" target="_blank" rel="noopener" aria-label="CWS Poetic Artistry">
-      <svg class="nav-logo-svg" viewBox="0 0 80 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <text x="0" y="22" font-family="Fraunces, serif" font-size="24" font-weight="600" fill="currentColor" letter-spacing="-0.5">CWS</text>
-      </svg>
+      <img src="cws-logo.png" alt="CWS Poetic Artistry" class="nav-logo-img">
     </a>
     <div class="nav-right-spacer"></div>
   </div>
@@ -58,13 +56,16 @@
 <!-- ── Hero ─────────────────────────────────────────────────────── -->
 <div class="hero-wrap">
 <section class="hero" id="main">
-  <!-- Hero video — starts paused; controls shown after play button click -->
-  <video class="hero-video" id="hero-video" playsinline poster="hero-poster.jpg" preload="metadata">
-    <source src="hero.mp4" type="video/mp4">
-  </video>
-  <!-- Dark scrim so text stays legible over the video -->
-  <div class="hero-scrim" aria-hidden="true"></div>
-  <!-- Text overlay with frosted glass card — fades out when video plays -->
+  <!-- Video section — fills hero on desktop; 16:9 width on mobile -->
+  <div class="hero-video-section">
+    <video class="hero-video" id="hero-video" playsinline poster="hero-poster.jpg" preload="metadata">
+      <source src="hero.mp4" type="video/mp4">
+    </video>
+    <div class="hero-scrim" aria-hidden="true"></div>
+    <!-- Mobile play button sits over the video; only this fades on play -->
+    <button id="play-video-btn-mobile" class="play-btn-mobile" aria-label="Play video">▶</button>
+  </div>
+  <!-- Text overlay — glass card over video on desktop; plain below video on mobile -->
   <div class="hero-text-overlay" id="hero-overlay">
     <div class="container">
       <div class="hero-glass-card">
@@ -981,19 +982,33 @@ function feedback(btn, original) {
   });
 })();
 
-// ── Hero video — Play button fades overlay and starts video with controls ─
+// ── Hero video — dual play buttons: desktop fades overlay, mobile fades only the button ─
 (function () {
-  var video   = document.getElementById('hero-video');
-  var overlay = document.getElementById('hero-overlay');
-  var playBtn = document.getElementById('play-video-btn');
-  if (!video || !overlay || !playBtn) return;
+  var video         = document.getElementById('hero-video');
+  var overlay       = document.getElementById('hero-overlay');
+  var playBtn       = document.getElementById('play-video-btn');
+  var playBtnMobile = document.getElementById('play-video-btn-mobile');
+  if (!video) return;
 
-  playBtn.addEventListener('click', function () {
+  function startVideo() {
     video.controls = true;
     video.currentTime = 0;
     video.play();
-    overlay.classList.add('hero-text-overlay--fade');
-  });
+  }
+
+  if (playBtn && overlay) {
+    playBtn.addEventListener('click', function () {
+      overlay.classList.add('hero-text-overlay--fade');
+      startVideo();
+    });
+  }
+
+  if (playBtnMobile) {
+    playBtnMobile.addEventListener('click', function () {
+      playBtnMobile.classList.add('hidden');
+      startVideo();
+    });
+  }
 })();
 </script>
 
