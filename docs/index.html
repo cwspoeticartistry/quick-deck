@@ -18,9 +18,9 @@
   <div class="nav-inner">
     <a class="nav-wordmark" href="#main">quick-deck</a>
     <ul class="nav-links" role="list">
-      <li><a href="#install">Install</a></li>
-      <li><a href="#styles">Styles</a></li>
-      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#tour">Install</a></li>
+      <li><a href="#tour">Styles</a></li>
+      <li><a href="#tour">FAQ</a></li>
     </ul>
     <a class="nav-github" href="https://github.com/cwspoeticartistry/quick-deck" aria-label="View on GitHub" target="_blank" rel="noopener">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -32,323 +32,525 @@
 
 <!-- ── Hero ─────────────────────────────────────────────────────── -->
 <section class="hero" id="main">
-  <div class="container">
-    <span class="hero-eyebrow">Claude Skill</span>
-    <h1>The fastest way to build a beautiful presentation in any Claude.</h1>
-    <p class="hero-sub">Answer three questions. Get a browser-ready HTML deck. Print to PDF in one keystroke. No API keys, no installs beyond Claude itself.</p>
-    <div class="hero-actions">
-      <a href="#install" class="btn-primary">Get the skill ↓</a>
-      <a href="styles.html" class="btn-ghost">See styles →</a>
+  <!-- Background video — muted autoplay loop; poster shown until video loads -->
+  <video class="hero-video" autoplay loop muted playsinline poster="hero-poster.jpg" aria-hidden="true">
+    <source src="hero.mp4" type="video/mp4">
+  </video>
+  <!-- Dark scrim so text stays legible over the video -->
+  <div class="hero-scrim" aria-hidden="true"></div>
+  <!-- Text overlay — fades out once video starts playing -->
+  <div class="hero-text-overlay" id="hero-overlay">
+    <div class="container">
+      <span class="hero-eyebrow">Claude Skill</span>
+      <h1>The fastest way to build a beautiful presentation in any Claude.</h1>
+      <p class="hero-sub">Answer three questions. Get a browser-ready HTML deck. Print to PDF in one keystroke. No API keys, no installs beyond Claude itself.</p>
+      <div class="hero-actions">
+        <a href="#tour" class="btn-primary">Get the skill ↓</a>
+        <a href="styles.html" class="btn-ghost">See styles →</a>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ── Features ──────────────────────────────────────────────────── -->
-<section class="features fade-in" aria-labelledby="features-heading">
+<!-- ── Zoom back button (fixed, hidden until zoom is open) ────────── -->
+<button class="device-zoom-back" id="zoom-back" aria-label="Back to carousel">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+  Back
+</button>
+
+<!-- ── Carousel section ───────────────────────────────────────────── -->
+<section class="carousel-section fade-in" id="tour" aria-labelledby="carousel-heading">
   <div class="container">
-    <div class="features-grid">
-
-      <div class="feature-item">
-        <div class="feature-icon" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
-        </div>
-        <div class="feature-title">Any Claude</div>
-        <div class="feature-desc">Works as a Claude Code skill, a Claude Desktop file attachment, and on Claude.ai. One file, every flavour.</div>
-      </div>
-
-      <div class="feature-item">
-        <div class="feature-icon" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        </div>
-        <div class="feature-title">No API keys</div>
-        <div class="feature-desc">Zero credentials required. No Firecrawl, no image services, no paid APIs. Just your existing Claude subscription.</div>
-      </div>
-
-      <div class="feature-item">
-        <div class="feature-icon" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
-        </div>
-        <div class="feature-title">PDF-ready</div>
-        <div class="feature-desc">Every deck renders as a local HTML file. One slide per page. Open in your browser, hit Ctrl+P, save as PDF.</div>
-      </div>
-
-    </div>
+    <div class="section-label">Take a tour</div>
+    <h2 class="section-heading" id="carousel-heading">Six screens. One workflow.</h2>
+    <p class="section-sub">Click any screen to explore it full size — all interactions still work inside.</p>
   </div>
-</section>
 
-<!-- ── Install ───────────────────────────────────────────────────── -->
-<section class="install fade-in" id="install" aria-labelledby="install-heading">
-  <div class="container">
-    <div class="section-label">Get started</div>
-    <h2 class="section-heading" id="install-heading">Pick your install path.</h2>
-    <p class="section-sub">Both paths end with the same three-question conversation and the same HTML output.</p>
+  <div class="carousel-stage" id="carousel-stage">
+    <div class="carousel-track" id="carousel-track">
 
-    <!-- Card grid (collapsed view) -->
-    <div class="card-grid" id="card-grid" role="group" aria-label="Install path selection">
-
-      <!-- Path A card -->
-      <button class="install-card" id="card-a" aria-expanded="false" aria-controls="detail-a" onclick="openDetail('a')">
-        <div class="install-card-icon" aria-hidden="true">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
-        </div>
-        <div class="install-card-title">Claude Code</div>
-        <div class="install-card-desc">If you use the Claude Code CLI, install quick-deck as a permanent skill. One setup, always available.</div>
-        <div class="install-card-cta" aria-hidden="true">Set up Claude Code <span>→</span></div>
-      </button>
-
-      <!-- Path B card -->
-      <button class="install-card" id="card-b" aria-expanded="false" aria-controls="detail-b" onclick="openDetail('b')">
-        <div class="install-card-icon" aria-hidden="true">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-        </div>
-        <div class="install-card-title">Claude Desktop &amp; Claude.ai</div>
-        <div class="install-card-desc">Download the skill file and attach it to any Claude conversation. Works on any device, no install required.</div>
-        <div class="install-card-cta" aria-hidden="true">Set up Desktop / .ai <span>→</span></div>
-      </button>
-
-    </div>
-
-    <!-- Detail: Path A -->
-    <div class="card-detail" id="detail-a" role="region" aria-labelledby="detail-a-heading" aria-hidden="true">
-      <button class="card-detail-back" onclick="closeDetail()" aria-label="Back to install path selection">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-        Back
-      </button>
-      <h3 class="card-detail-title" id="detail-a-heading">Install for Claude Code</h3>
-      <ol class="steps" role="list">
-
-        <li class="step">
-          <div class="step-num" aria-hidden="true">1</div>
-          <div class="step-content">
-            <h4>Download the skill file</h4>
-            <p>This single Markdown file is the entire skill. Claude reads it and knows exactly what to do.</p>
-            <a href="quick-deck.md" download="quick-deck.md" class="dl-btn" id="dl-btn-a">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-              Download quick-deck.md
-            </a>
+      <!-- ── Device 0: Features ──────────────────────────────────── -->
+      <div class="device" data-index="0" style="--idx:0"
+           tabindex="0" role="button" aria-label="Open Features"
+           onclick="handleDeviceClick(0)"
+           onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();handleDeviceClick(0)}">
+        <div class="device-frame">
+          <div class="device-bar">
+            <div class="device-dots"><span class="device-dot"></span><span class="device-dot"></span><span class="device-dot"></span></div>
+            <span class="device-url">features</span>
           </div>
-        </li>
-
-        <li class="step">
-          <div class="step-num" aria-hidden="true">2</div>
-          <div class="step-content">
-            <h4>Move it to your skills folder</h4>
-            <p>Rename the file to <code>SKILL.md</code> and place it in the Claude Code skills folder for your operating system:</p>
-
-            <div class="copy-tabs" role="tablist" aria-label="Operating system">
-              <button class="copy-tab active" role="tab" aria-selected="true" onclick="switchTab(this,'path-mac')">Mac / Linux</button>
-              <button class="copy-tab" role="tab" aria-selected="false" onclick="switchTab(this,'path-win')">Windows</button>
+          <div class="device-content-wrap">
+            <div class="device-content">
+              <section class="features" aria-label="Features">
+                <div class="container">
+                  <div class="features-grid">
+                    <div class="feature-item">
+                      <div class="feature-icon" aria-hidden="true">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                      </div>
+                      <div class="feature-title">Any Claude</div>
+                      <div class="feature-desc">Works as a Claude Code skill, a Claude Desktop file attachment, and on Claude.ai. One file, every flavour.</div>
+                    </div>
+                    <div class="feature-item">
+                      <div class="feature-icon" aria-hidden="true">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                      </div>
+                      <div class="feature-title">No API keys</div>
+                      <div class="feature-desc">Zero credentials required. No Firecrawl, no image services, no paid APIs. Just your existing Claude subscription.</div>
+                    </div>
+                    <div class="feature-item">
+                      <div class="feature-icon" aria-hidden="true">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
+                      </div>
+                      <div class="feature-title">PDF-ready</div>
+                      <div class="feature-desc">Every deck renders as a local HTML file. One slide per page. Open in your browser, hit Ctrl+P, save as PDF.</div>
+                    </div>
+                  </div>
+                </div>
+              </section>
             </div>
-
-            <div id="path-mac" class="copy-block">
-              <span class="copy-block-code">~/.claude/skills/quick-deck/SKILL.md</span>
-              <button class="copy-btn" onclick="copyText(this,'~/.claude/skills/quick-deck/SKILL.md')" aria-label="Copy Mac path">Copy</button>
-            </div>
-            <div id="path-win" class="copy-block" style="display:none">
-              <span class="copy-block-code">%USERPROFILE%\.claude\skills\quick-deck\SKILL.md</span>
-              <button class="copy-btn" onclick="copyText(this,'%USERPROFILE%\\.claude\\skills\\quick-deck\\SKILL.md')" aria-label="Copy Windows path">Copy</button>
-            </div>
-
-            <p style="margin-top:12px;font-size:13px;color:var(--ink-mute)">You may need to create the <code>skills/quick-deck/</code> folder first.</p>
           </div>
-        </li>
+        </div>
+      </div>
 
-        <li class="step">
-          <div class="step-num" aria-hidden="true">3</div>
-          <div class="step-content">
-            <h4>Open Claude Code and trigger the skill</h4>
-            <p>Restart Claude Code if it was already open, then type this phrase in any conversation:</p>
-            <div class="copy-block">
-              <span class="copy-block-code">use quick-deck</span>
-              <button class="copy-btn" onclick="copyText(this,'use quick-deck')" aria-label="Copy trigger phrase">Copy</button>
-            </div>
-            <p style="margin-top:12px;font-size:13px;color:var(--ink-mute)">Claude will greet you with the first question immediately.</p>
+      <!-- ── Device 1: Install ───────────────────────────────────── -->
+      <div class="device" data-index="1" style="--idx:1" id="install"
+           tabindex="0" role="button" aria-label="Open Install"
+           onclick="handleDeviceClick(1)"
+           onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();handleDeviceClick(1)}">
+        <div class="device-frame">
+          <div class="device-bar">
+            <div class="device-dots"><span class="device-dot"></span><span class="device-dot"></span><span class="device-dot"></span></div>
+            <span class="device-url">get started</span>
           </div>
-        </li>
+          <div class="device-content-wrap">
+            <div class="device-content">
+              <section class="install" aria-labelledby="install-heading">
+                <div class="container">
+                  <div class="section-label">Get started</div>
+                  <h2 class="section-heading" id="install-heading">Pick your install path.</h2>
+                  <p class="section-sub">Both paths end with the same three-question conversation and the same HTML output.</p>
 
-      </ol>
+                  <div class="card-grid" id="card-grid" role="group" aria-label="Install path selection">
+                    <button class="install-card" id="card-a" aria-expanded="false" aria-controls="detail-a" onclick="openDetail('a')">
+                      <div class="install-card-icon" aria-hidden="true">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+                      </div>
+                      <div class="install-card-title">Claude Code</div>
+                      <div class="install-card-desc">If you use the Claude Code CLI, install quick-deck as a permanent skill. One setup, always available.</div>
+                      <div class="install-card-cta" aria-hidden="true">Set up Claude Code <span>→</span></div>
+                    </button>
+                    <button class="install-card" id="card-b" aria-expanded="false" aria-controls="detail-b" onclick="openDetail('b')">
+                      <div class="install-card-icon" aria-hidden="true">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                      </div>
+                      <div class="install-card-title">Claude Desktop &amp; Claude.ai</div>
+                      <div class="install-card-desc">Download the skill file and attach it to any Claude conversation. Works on any device, no install required.</div>
+                      <div class="install-card-cta" aria-hidden="true">Set up Desktop / .ai <span>→</span></div>
+                    </button>
+                  </div>
+
+                  <div class="card-detail" id="detail-a" role="region" aria-labelledby="detail-a-heading" aria-hidden="true">
+                    <button class="card-detail-back" onclick="closeDetail()" aria-label="Back to install path selection">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+                      Back
+                    </button>
+                    <h3 class="card-detail-title" id="detail-a-heading">Install for Claude Code</h3>
+                    <ol class="steps" role="list">
+                      <li class="step">
+                        <div class="step-num" aria-hidden="true">1</div>
+                        <div class="step-content">
+                          <h4>Download the skill file</h4>
+                          <p>This single Markdown file is the entire skill. Claude reads it and knows exactly what to do.</p>
+                          <a href="quick-deck.md" download="quick-deck.md" class="dl-btn" id="dl-btn-a">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Download quick-deck.md
+                          </a>
+                        </div>
+                      </li>
+                      <li class="step">
+                        <div class="step-num" aria-hidden="true">2</div>
+                        <div class="step-content">
+                          <h4>Move it to your skills folder</h4>
+                          <p>Rename the file to <code>SKILL.md</code> and place it in the Claude Code skills folder for your operating system:</p>
+                          <div class="copy-tabs" role="tablist" aria-label="Operating system">
+                            <button class="copy-tab active" role="tab" aria-selected="true" onclick="switchTab(this,'path-mac')">Mac / Linux</button>
+                            <button class="copy-tab" role="tab" aria-selected="false" onclick="switchTab(this,'path-win')">Windows</button>
+                          </div>
+                          <div id="path-mac" class="copy-block">
+                            <span class="copy-block-code">~/.claude/skills/quick-deck/SKILL.md</span>
+                            <button class="copy-btn" onclick="copyText(this,'~/.claude/skills/quick-deck/SKILL.md')" aria-label="Copy Mac path">Copy</button>
+                          </div>
+                          <div id="path-win" class="copy-block" style="display:none">
+                            <span class="copy-block-code">%USERPROFILE%\.claude\skills\quick-deck\SKILL.md</span>
+                            <button class="copy-btn" onclick="copyText(this,'%USERPROFILE%\\.claude\\skills\\quick-deck\\SKILL.md')" aria-label="Copy Windows path">Copy</button>
+                          </div>
+                          <p style="margin-top:12px;font-size:13px;color:var(--ink-mute)">You may need to create the <code>skills/quick-deck/</code> folder first.</p>
+                        </div>
+                      </li>
+                      <li class="step">
+                        <div class="step-num" aria-hidden="true">3</div>
+                        <div class="step-content">
+                          <h4>Open Claude Code and trigger the skill</h4>
+                          <p>Restart Claude Code if it was already open, then type this phrase in any conversation:</p>
+                          <div class="copy-block">
+                            <span class="copy-block-code">use quick-deck</span>
+                            <button class="copy-btn" onclick="copyText(this,'use quick-deck')" aria-label="Copy trigger phrase">Copy</button>
+                          </div>
+                          <p style="margin-top:12px;font-size:13px;color:var(--ink-mute)">Claude will greet you with the first question immediately.</p>
+                        </div>
+                      </li>
+                    </ol>
+                  </div>
+
+                  <div class="card-detail" id="detail-b" role="region" aria-labelledby="detail-b-heading" aria-hidden="true">
+                    <button class="card-detail-back" onclick="closeDetail()" aria-label="Back to install path selection">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+                      Back
+                    </button>
+                    <h3 class="card-detail-title" id="detail-b-heading">Install for Claude Desktop &amp; Claude.ai</h3>
+                    <ol class="steps" role="list">
+                      <li class="step">
+                        <div class="step-num" aria-hidden="true">1</div>
+                        <div class="step-content">
+                          <h4>Download the skill file</h4>
+                          <p>This single Markdown file is the entire skill. Claude reads it and knows exactly what to do.</p>
+                          <a href="quick-deck.md" download="quick-deck.md" class="dl-btn" id="dl-btn-b">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Download quick-deck.md
+                          </a>
+                        </div>
+                      </li>
+                      <li class="step">
+                        <div class="step-num" aria-hidden="true">2</div>
+                        <div class="step-content">
+                          <h4>Start a new conversation and attach the file</h4>
+                          <p>In Claude Desktop or on Claude.ai, open a fresh conversation. Use the paperclip or attachment button to attach the <code>quick-deck.md</code> file you just downloaded.</p>
+                        </div>
+                      </li>
+                      <li class="step">
+                        <div class="step-num" aria-hidden="true">3</div>
+                        <div class="step-content">
+                          <h4>Send this message to activate</h4>
+                          <p>With the file attached, send exactly this message:</p>
+                          <div class="copy-block">
+                            <span class="copy-block-code">Please follow the instructions in the attached file.</span>
+                            <button class="copy-btn" onclick="copyText(this,'Please follow the instructions in the attached file.')" aria-label="Copy activation message">Copy</button>
+                          </div>
+                          <p style="margin-top:12px;font-size:13px;color:var(--ink-mute)">Claude will greet you with the first question immediately. You can reuse the same attached file in future conversations.</p>
+                        </div>
+                      </li>
+                    </ol>
+                  </div>
+
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Device 2: Conversation ──────────────────────────────── -->
+      <div class="device" data-index="2" style="--idx:2" id="preview"
+           tabindex="0" role="button" aria-label="Open Conversation preview"
+           onclick="handleDeviceClick(2)"
+           onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();handleDeviceClick(2)}">
+        <div class="device-frame">
+          <div class="device-bar">
+            <div class="device-dots"><span class="device-dot"></span><span class="device-dot"></span><span class="device-dot"></span></div>
+            <span class="device-url">conversation</span>
+          </div>
+          <div class="device-content-wrap">
+            <div class="device-content">
+              <section class="conversation conversation--dark" aria-labelledby="preview-heading">
+                <div class="container">
+                  <div class="section-label">What to expect</div>
+                  <h2 class="section-heading" id="preview-heading">Three questions. One deck.</h2>
+                  <p class="section-sub">After activation, Claude walks you through a short intake. Here's what that looks like.</p>
+                  <div class="chat-window" role="log" aria-label="Example conversation">
+                    <div class="bubble bubble-claude">
+                      <div class="bubble-q-label">Question 1 — Type</div>
+                      What type of presentation would you like me to create today? Do you have an existing one to update, an example to recreate, or would you like to describe what you want from scratch?
+                    </div>
+                    <div class="bubble bubble-user">A new sales pitch deck — about 10 slides.</div>
+                    <div class="bubble bubble-claude">
+                      <div class="bubble-q-label">Question 2 — Style</div>
+                      Is there a particular style you have in mind? You can paste a reference link, or browse our prebuilt styles at <strong>styles.html</strong> — click any card and paste the snippet it gives you here.
+                    </div>
+                    <div class="bubble bubble-user">Use the "Editorial Dark" style.</div>
+                    <div class="bubble bubble-claude">
+                      <div class="bubble-q-label">Question 3 — Assets</div>
+                      Do you have any assets to include — a logo, images, or a previous deck? Attach files, paste image URLs, or say "none" to use CSS-only visuals.
+                    </div>
+                    <div class="bubble bubble-user">None for now.</div>
+                    <div class="bubble bubble-claude">
+                      Got it. Here's my proposed outline — please confirm or tell me what to change before I build the deck…
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Device 3: Styles ────────────────────────────────────── -->
+      <div class="device" data-index="3" style="--idx:3" id="styles"
+           tabindex="0" role="button" aria-label="Open Styles gallery"
+           onclick="handleDeviceClick(3)"
+           onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();handleDeviceClick(3)}">
+        <div class="device-frame">
+          <div class="device-bar">
+            <div class="device-dots"><span class="device-dot"></span><span class="device-dot"></span><span class="device-dot"></span></div>
+            <span class="device-url">styles</span>
+          </div>
+          <div class="device-content-wrap">
+            <div class="device-content">
+              <section class="styles-cta" aria-labelledby="styles-heading">
+                <div class="container">
+                  <div class="styles-cta-inner">
+                    <div>
+                      <div class="section-label">Styles gallery</div>
+                      <h2 class="section-heading" id="styles-heading">10 prebuilt styles, ready to paste.</h2>
+                      <p style="color:var(--ink-mute);margin-bottom:32px">Browse the gallery, click a style card, and paste the snippet Claude gives you when it asks for your style preference.</p>
+                      <a href="styles.html" class="btn-primary">Browse styles →</a>
+                    </div>
+                    <div class="style-thumbnails" aria-hidden="true">
+                      <div class="style-thumb-mini">
+                        <svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
+                          <rect width="320" height="180" fill="#111111"/>
+                          <rect x="40" y="52" width="28" height="3" fill="#c9a14a"/>
+                          <text x="40" y="80" font-family="Georgia,serif" font-size="22" fill="#f5f0e8" font-weight="bold">Editorial Dark</text>
+                          <text x="40" y="100" font-family="Arial,sans-serif" font-size="11" fill="#c8c4bc">Magazine editorial feel</text>
+                          <rect x="40" y="115" width="180" height="1.5" fill="#c9a14a" opacity="0.4"/>
+                          <text x="40" y="130" font-family="Arial,sans-serif" font-size="10" fill="#c8c4bc" opacity="0.8">— Strong typographic hierarchy</text>
+                          <rect x="250" y="40" width="30" height="100" fill="#c9a14a" opacity="0.08"/>
+                        </svg>
+                      </div>
+                      <div class="style-thumb-mini">
+                        <svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
+                          <rect width="320" height="180" fill="#ffffff"/>
+                          <rect x="0" y="0" width="320" height="6" fill="#2563eb"/>
+                          <rect x="40" y="35" width="24" height="3" fill="#2563eb"/>
+                          <text x="40" y="70" font-family="Arial,sans-serif" font-size="20" fill="#1a2b4a" font-weight="bold">Clean Corporate</text>
+                          <text x="40" y="90" font-family="Arial,sans-serif" font-size="11" fill="#4a5568">Professional business presentation</text>
+                          <line x1="40" y1="105" x2="240" y2="105" stroke="#e2e8f0" stroke-width="1.5"/>
+                          <text x="40" y="122" font-family="Arial,sans-serif" font-size="10" fill="#4a5568">• Clear structure and data-forward</text>
+                          <rect x="270" y="30" width="20" height="120" fill="#2563eb" opacity="0.06"/>
+                        </svg>
+                      </div>
+                      <div class="style-thumb-mini">
+                        <svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
+                          <rect width="320" height="180" fill="#0f0e17"/>
+                          <circle cx="270" cy="40" r="50" fill="#ff8906" opacity="0.12"/>
+                          <text x="40" y="72" font-family="Arial,sans-serif" font-size="22" fill="#fffffe" font-weight="bold">Playful Startup</text>
+                          <text x="40" y="92" font-family="Arial,sans-serif" font-size="11" fill="#a7a9be">Bold and energetic tech feel</text>
+                          <rect x="40" y="110" width="60" height="3" fill="#ff8906"/>
+                          <text x="40" y="130" font-family="Arial,sans-serif" font-size="10" fill="#a7a9be" opacity="0.9">— Modern. Direct. Confident.</text>
+                        </svg>
+                      </div>
+                      <div class="style-thumb-mini">
+                        <svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
+                          <rect width="320" height="180" fill="#faf6f1"/>
+                          <rect x="40" y="50" width="40" height="2" fill="#c9856a"/>
+                          <text x="40" y="82" font-family="Georgia,serif" font-size="22" fill="#2c2018" font-weight="bold">Warm Minimalist</text>
+                          <text x="40" y="102" font-family="Arial,sans-serif" font-size="11" fill="#7a6a5a">Soft neutrals, organic warmth</text>
+                          <rect x="40" y="118" width="200" height="1" fill="#e8ddd4"/>
+                          <text x="40" y="138" font-family="Arial,sans-serif" font-size="10" fill="#9a8a7a">— Ideal for wellness, lifestyle</text>
+                          <rect x="260" y="140" width="20" height="20" rx="10" fill="#c9856a" opacity="0.25"/>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Device 4: PDF Export ────────────────────────────────── -->
+      <div class="device" data-index="4" style="--idx:4" id="pdf"
+           tabindex="0" role="button" aria-label="Open PDF Export steps"
+           onclick="handleDeviceClick(4)"
+           onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();handleDeviceClick(4)}">
+        <div class="device-frame">
+          <div class="device-bar">
+            <div class="device-dots"><span class="device-dot"></span><span class="device-dot"></span><span class="device-dot"></span></div>
+            <span class="device-url">pdf export</span>
+          </div>
+          <div class="device-content-wrap">
+            <div class="device-content">
+              <section class="pdf-steps" aria-labelledby="pdf-heading">
+                <div class="container">
+                  <div class="section-label">Export</div>
+                  <h2 class="section-heading" id="pdf-heading">Save your deck as a PDF.</h2>
+                  <p class="section-sub">Every deck renders to a local HTML file. One print command turns it into a crisp, one-slide-per-page PDF.</p>
+                  <div class="pdf-step-grid" role="list">
+                    <div class="pdf-step-item" role="listitem">
+                      <div class="pdf-step-num" aria-hidden="true">01</div>
+                      <div class="pdf-step-title">Open the deck</div>
+                      <div class="pdf-step-desc">Claude tells you the file path. Open it directly in Chrome, Edge, Firefox, or Safari.</div>
+                    </div>
+                    <div class="pdf-step-item" role="listitem">
+                      <div class="pdf-step-num" aria-hidden="true">02</div>
+                      <div class="pdf-step-title">Print to PDF</div>
+                      <div class="pdf-step-desc">Press <kbd style="font-family:inherit">Ctrl+P</kbd> (or <kbd style="font-family:inherit">⌘P</kbd> on Mac). Change the destination to "Save as PDF".</div>
+                    </div>
+                    <div class="pdf-step-item" role="listitem">
+                      <div class="pdf-step-num" aria-hidden="true">03</div>
+                      <div class="pdf-step-title">Check page settings</div>
+                      <div class="pdf-step-desc">Set paper size to Custom (1280×720px) or Landscape A4. Margins: None. Background graphics: On.</div>
+                    </div>
+                    <div class="pdf-step-item" role="listitem">
+                      <div class="pdf-step-num" aria-hidden="true">04</div>
+                      <div class="pdf-step-title">Save</div>
+                      <div class="pdf-step-desc">Each slide is exactly one page. The deck renders at full fidelity — fonts, colours, and layout preserved.</div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Device 5: FAQ ───────────────────────────────────────── -->
+      <div class="device" data-index="5" style="--idx:5" id="faq"
+           tabindex="0" role="button" aria-label="Open FAQ"
+           onclick="handleDeviceClick(5)"
+           onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();handleDeviceClick(5)}">
+        <div class="device-frame">
+          <div class="device-bar">
+            <div class="device-dots"><span class="device-dot"></span><span class="device-dot"></span><span class="device-dot"></span></div>
+            <span class="device-url">faq</span>
+          </div>
+          <div class="device-content-wrap">
+            <div class="device-content">
+              <section class="faq" aria-labelledby="faq-heading">
+                <div class="container">
+                  <div class="section-label">FAQ</div>
+                  <h2 class="section-heading" id="faq-heading">Common questions.</h2>
+                  <div class="faq-list" role="list">
+                    <details role="listitem">
+                      <summary>Does this work with Claude.ai (the web version)?</summary>
+                      <div class="faq-answer">
+                        Yes. Download <code>quick-deck.md</code>, open a new conversation on Claude.ai, attach the file, and send <em>"Please follow the instructions in the attached file."</em> The deck is saved to your local machine when Claude writes the HTML output. This is Path B in the install guide.
+                      </div>
+                    </details>
+                    <details role="listitem">
+                      <summary>Do I need a paid Claude subscription?</summary>
+                      <div class="faq-answer">
+                        You need whatever Claude access you already have — free or paid. quick-deck uses no external services or APIs. The only limit is your Claude session's context window, which free tiers handle fine for most decks.
+                      </div>
+                    </details>
+                    <details role="listitem">
+                      <summary>Can I update an existing presentation instead of building from scratch?</summary>
+                      <div class="faq-answer">
+                        Yes. When Claude asks "What type of presentation?" (Question 1), say you have an existing one and attach it. Claude will read the current slides and apply changes — rewriting copy, restyling, or adding slides — then save a new version file. The original is never overwritten.
+                      </div>
+                    </details>
+                    <details role="listitem">
+                      <summary>Where does the deck file go? Do I need a local server?</summary>
+                      <div class="faq-answer">
+                        Claude saves the deck as a plain <code>.html</code> file to your current working directory (or wherever you tell it to). No server needed — just open the file directly in your browser. The CSS and fonts are either inlined or loaded from a CDN, so it works completely offline after first load.
+                      </div>
+                    </details>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /carousel-track -->
+  </div><!-- /carousel-stage -->
+
+  <!-- Nav controls -->
+  <div class="carousel-nav" id="carousel-nav" role="group" aria-label="Carousel navigation">
+    <button class="carousel-arrow carousel-arrow--prev" onclick="cycle(-1)" aria-label="Previous screen">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <div class="carousel-dots" role="tablist" aria-label="Select screen">
+      <button class="carousel-dot-btn active" role="tab" aria-selected="true"  aria-label="Features"          onclick="setActive(0)"></button>
+      <button class="carousel-dot-btn"        role="tab" aria-selected="false" aria-label="Install"           onclick="setActive(1)"></button>
+      <button class="carousel-dot-btn"        role="tab" aria-selected="false" aria-label="Conversation"      onclick="setActive(2)"></button>
+      <button class="carousel-dot-btn"        role="tab" aria-selected="false" aria-label="Styles gallery"    onclick="setActive(3)"></button>
+      <button class="carousel-dot-btn"        role="tab" aria-selected="false" aria-label="PDF export"        onclick="setActive(4)"></button>
+      <button class="carousel-dot-btn"        role="tab" aria-selected="false" aria-label="FAQ"               onclick="setActive(5)"></button>
     </div>
-
-    <!-- Detail: Path B -->
-    <div class="card-detail" id="detail-b" role="region" aria-labelledby="detail-b-heading" aria-hidden="true">
-      <button class="card-detail-back" onclick="closeDetail()" aria-label="Back to install path selection">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-        Back
-      </button>
-      <h3 class="card-detail-title" id="detail-b-heading">Install for Claude Desktop &amp; Claude.ai</h3>
-      <ol class="steps" role="list">
-
-        <li class="step">
-          <div class="step-num" aria-hidden="true">1</div>
-          <div class="step-content">
-            <h4>Download the skill file</h4>
-            <p>This single Markdown file is the entire skill. Claude reads it and knows exactly what to do.</p>
-            <a href="quick-deck.md" download="quick-deck.md" class="dl-btn" id="dl-btn-b">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-              Download quick-deck.md
-            </a>
-          </div>
-        </li>
-
-        <li class="step">
-          <div class="step-num" aria-hidden="true">2</div>
-          <div class="step-content">
-            <h4>Start a new conversation and attach the file</h4>
-            <p>In Claude Desktop or on Claude.ai, open a fresh conversation. Use the paperclip or attachment button to attach the <code>quick-deck.md</code> file you just downloaded.</p>
-          </div>
-        </li>
-
-        <li class="step">
-          <div class="step-num" aria-hidden="true">3</div>
-          <div class="step-content">
-            <h4>Send this message to activate</h4>
-            <p>With the file attached, send exactly this message:</p>
-            <div class="copy-block">
-              <span class="copy-block-code">Please follow the instructions in the attached file.</span>
-              <button class="copy-btn" onclick="copyText(this,'Please follow the instructions in the attached file.')" aria-label="Copy activation message">Copy</button>
-            </div>
-            <p style="margin-top:12px;font-size:13px;color:var(--ink-mute)">Claude will greet you with the first question immediately. You can reuse the same attached file in future conversations.</p>
-          </div>
-        </li>
-
-      </ol>
-    </div>
-
+    <span class="carousel-counter" id="carousel-counter" aria-live="polite" aria-atomic="true">01 / 06</span>
+    <button class="carousel-arrow carousel-arrow--next" onclick="cycle(1)" aria-label="Next screen">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
   </div>
+
 </section>
 
-<!-- ── Conversation preview ───────────────────────────────────────── -->
-<section class="conversation fade-in" id="preview" aria-labelledby="preview-heading">
+<!-- ── Bonus skills ───────────────────────────────────────────────── -->
+<section class="bonus-skills fade-in" id="more-skills" aria-labelledby="bonus-heading">
   <div class="container">
-    <div class="section-label">What to expect</div>
-    <h2 class="section-heading" id="preview-heading">Three questions. One deck.</h2>
-    <p class="section-sub">After activation, Claude walks you through a short intake. Here's what that looks like.</p>
+    <div class="section-label">Skill suite</div>
+    <h2 class="section-heading" id="bonus-heading">Give your Claude the full kit.</h2>
+    <p class="section-sub" style="margin-bottom:40px">Install these alongside quick-deck so Claude can research topics, pull from PDFs, and scrape URLs — all without leaving the conversation.</p>
 
-    <div class="chat-window" role="log" aria-live="polite" aria-label="Example conversation">
+    <div class="bonus-grid">
 
-      <div class="bubble bubble-claude">
-        <div class="bubble-q-label">Question 1 — Type</div>
-        What type of presentation would you like me to create today? Do you have an existing one to update, an example to recreate, or would you like to describe what you want from scratch?
-      </div>
-      <div class="bubble bubble-user">A new sales pitch deck — about 10 slides.</div>
-
-      <div class="bubble bubble-claude">
-        <div class="bubble-q-label">Question 2 — Style</div>
-        Is there a particular style you have in mind? You can paste a reference link, or browse our prebuilt styles at <strong>styles.html</strong> — click any card and paste the snippet it gives you here.
-      </div>
-      <div class="bubble bubble-user">Use the "Editorial Dark" style.</div>
-
-      <div class="bubble bubble-claude">
-        <div class="bubble-q-label">Question 3 — Assets</div>
-        Do you have any assets to include — a logo, images, or a previous deck? Attach files, paste image URLs, or say "none" to use CSS-only visuals.
-      </div>
-      <div class="bubble bubble-user">None for now.</div>
-
-      <div class="bubble bubble-claude">
-        Got it. Here's my proposed outline — please confirm or tell me what to change before I build the deck…
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ── Styles CTA ─────────────────────────────────────────────────── -->
-<section class="styles-cta fade-in" id="styles" aria-labelledby="styles-heading">
-  <div class="container">
-    <div class="styles-cta-inner">
-
-      <div>
-        <div class="section-label">Styles gallery</div>
-        <h2 class="section-heading" id="styles-heading">10 prebuilt styles, ready to paste.</h2>
-        <p style="color:var(--ink-mute);margin-bottom:32px">Browse the gallery, click a style card, and paste the snippet Claude gives you when it asks for your style preference.</p>
-        <a href="styles.html" class="btn-primary">Browse styles →</a>
-      </div>
-
-      <div class="style-thumbnails" aria-hidden="true">
-        <div class="style-thumb-placeholder" style="background:#1a1a2e"></div>
-        <div class="style-thumb-placeholder" style="background:#f4f4f0"></div>
-        <div class="style-thumb-placeholder" style="background:#0f1117"></div>
-        <div class="style-thumb-placeholder" style="background:#fff8f0"></div>
-        <div class="style-thumb-placeholder" style="background:#2d3561"></div>
-        <div class="style-thumb-placeholder" style="background:#0a0a0a"></div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ── PDF export steps ───────────────────────────────────────────── -->
-<section class="pdf-steps fade-in" id="pdf" aria-labelledby="pdf-heading">
-  <div class="container">
-    <div class="section-label">Export</div>
-    <h2 class="section-heading" id="pdf-heading">Save your deck as a PDF.</h2>
-    <p class="section-sub">Every deck renders to a local HTML file. One print command turns it into a crisp, one-slide-per-page PDF.</p>
-
-    <div class="pdf-step-grid" role="list">
-
-      <div class="pdf-step-item" role="listitem">
-        <div class="pdf-step-num" aria-hidden="true">01</div>
-        <div class="pdf-step-title">Open the deck</div>
-        <div class="pdf-step-desc">Claude tells you the file path. Open it directly in Chrome, Edge, Firefox, or Safari.</div>
-      </div>
-
-      <div class="pdf-step-item" role="listitem">
-        <div class="pdf-step-num" aria-hidden="true">02</div>
-        <div class="pdf-step-title">Print to PDF</div>
-        <div class="pdf-step-desc">Press <kbd style="font-family:inherit">Ctrl+P</kbd> (or <kbd style="font-family:inherit">⌘P</kbd> on Mac). Change the destination to "Save as PDF".</div>
-      </div>
-
-      <div class="pdf-step-item" role="listitem">
-        <div class="pdf-step-num" aria-hidden="true">03</div>
-        <div class="pdf-step-title">Check page settings</div>
-        <div class="pdf-step-desc">Set paper size to Custom (1280×720px) or Landscape A4. Margins: None. Background graphics: On.</div>
-      </div>
-
-      <div class="pdf-step-item" role="listitem">
-        <div class="pdf-step-num" aria-hidden="true">04</div>
-        <div class="pdf-step-title">Save</div>
-        <div class="pdf-step-desc">Each slide is exactly one page. The deck renders at full fidelity — fonts, colours, and layout preserved.</div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ── FAQ ───────────────────────────────────────────────────────── -->
-<section class="faq fade-in" id="faq" aria-labelledby="faq-heading">
-  <div class="container">
-    <div class="section-label">FAQ</div>
-    <h2 class="section-heading" id="faq-heading">Common questions.</h2>
-
-    <div class="faq-list" role="list">
-
-      <details role="listitem">
-        <summary>Does this work with Claude.ai (the web version)?</summary>
-        <div class="faq-answer">
-          Yes. Download <code>quick-deck.md</code>, open a new conversation on Claude.ai, attach the file, and send <em>"Please follow the instructions in the attached file."</em> The deck is saved to your local machine when Claude writes the HTML output (Claude.ai's file download feature). This is Path B in the install guide above.
+      <!-- web-research skill card -->
+      <div class="bonus-card">
+        <div class="bonus-card-icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
         </div>
-      </details>
-
-      <details role="listitem">
-        <summary>Do I need a paid Claude subscription?</summary>
-        <div class="faq-answer">
-          You need whatever Claude access you already have — free or paid. quick-deck uses no external services or APIs. The only limit is your Claude session's context window, which free tiers handle fine for most decks.
+        <div class="bonus-card-body">
+          <div class="bonus-card-name">web-research</div>
+          <div class="bonus-card-desc">Scrape any URL or search query into clean Markdown, then pipe it straight into quick-deck. Paste a link, get a deck. Powered by Firecrawl.</div>
+          <div class="bonus-card-meta">
+            <span class="bonus-badge">Requires Firecrawl API key</span>
+            <span class="bonus-badge bonus-badge--free">Free forever</span>
+          </div>
         </div>
-      </details>
+        <a href="firecrawl.md" download="web-research.md" class="bonus-dl-btn" aria-label="Download web-research skill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download skill
+        </a>
+      </div>
 
-      <details role="listitem">
-        <summary>Can I update an existing presentation instead of building from scratch?</summary>
-        <div class="faq-answer">
-          Yes. When Claude asks "What type of presentation?" (Question 1), say you have an existing one and attach it. Claude will read the current slides and apply changes — rewriting copy, restyling, or adding slides — then save a new version file. The original is never overwritten.
+      <!-- deck-from-pdf skill card (coming soon) -->
+      <div class="bonus-card">
+        <div class="bonus-card-icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
         </div>
-      </details>
+        <div class="bonus-card-body">
+          <div class="bonus-card-name">deck-from-pdf</div>
+          <div class="bonus-card-desc">Drop in any PDF — a report, whitepaper, or brief — and Claude extracts the key points and builds a deck automatically. No copy-paste.</div>
+          <div class="bonus-card-meta">
+            <span class="bonus-badge">No extra keys required</span>
+            <span class="bonus-badge bonus-badge--free">Free forever</span>
+          </div>
+        </div>
+        <span class="bonus-dl-btn bonus-dl-btn--soon" aria-label="deck-from-pdf coming soon">
+          Coming soon
+        </span>
+      </div>
 
-      <details role="listitem">
-        <summary>Where does the deck file go? Do I need a local server?</summary>
-        <div class="faq-answer">
-          Claude saves the deck as a plain <code>.html</code> file to your current working directory (or wherever you tell it to). No server needed — just open the file directly in your browser. The CSS and fonts are either inlined or loaded from a CDN, so it works completely offline after first load.
+      <!-- deck-from-url skill card (coming soon) -->
+      <div class="bonus-card">
+        <div class="bonus-card-icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
         </div>
-      </details>
+        <div class="bonus-card-body">
+          <div class="bonus-card-name">deck-from-url</div>
+          <div class="bonus-card-desc">Paste any article, product page, or doc URL. Claude reads it, distils the key points, and builds a presentation — all in one message.</div>
+          <div class="bonus-card-meta">
+            <span class="bonus-badge">No extra keys required</span>
+            <span class="bonus-badge bonus-badge--free">Free forever</span>
+          </div>
+        </div>
+        <span class="bonus-dl-btn bonus-dl-btn--soon" aria-label="deck-from-url coming soon">
+          Coming soon
+        </span>
+      </div>
 
     </div>
   </div>
@@ -375,43 +577,30 @@
 <script>
 // ── Card detail transitions ───────────────────────────────────────
 function openDetail(path) {
-  const grid = document.getElementById('card-grid');
+  const grid    = document.getElementById('card-grid');
   const detailA = document.getElementById('detail-a');
   const detailB = document.getElementById('detail-b');
-  const cardA = document.getElementById('card-a');
-  const cardB = document.getElementById('card-b');
+  const cardA   = document.getElementById('card-a');
+  const cardB   = document.getElementById('card-b');
 
-  // Hide grid
   grid.classList.add('hidden');
-
-  // Close both details first
-  [detailA, detailB].forEach(d => {
-    d.classList.remove('active');
-    d.setAttribute('aria-hidden', 'true');
-  });
+  [detailA, detailB].forEach(d => { d.classList.remove('active'); d.setAttribute('aria-hidden', 'true'); });
   [cardA, cardB].forEach(c => c.setAttribute('aria-expanded', 'false'));
 
-  // Show requested detail
   const detail = path === 'a' ? detailA : detailB;
-  const card   = path === 'a' ? cardA : cardB;
-
+  const card   = path === 'a' ? cardA   : cardB;
   detail.classList.add('active');
   detail.setAttribute('aria-hidden', 'false');
   card.setAttribute('aria-expanded', 'true');
 
-  // Scroll to install section
-  document.getElementById('install').scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-  // Focus the back button
   const back = detail.querySelector('.card-detail-back');
   if (back) setTimeout(() => back.focus(), 100);
 }
 
 function closeDetail() {
-  const grid = document.getElementById('card-grid');
+  const grid    = document.getElementById('card-grid');
   const details = document.querySelectorAll('.card-detail');
   const cards   = document.querySelectorAll('.install-card');
-
   details.forEach(d => { d.classList.remove('active'); d.setAttribute('aria-hidden', 'true'); });
   cards.forEach(c => c.setAttribute('aria-expanded', 'false'));
   grid.classList.remove('hidden');
@@ -423,10 +612,7 @@ function switchTab(tabEl, showId) {
   tabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
   tabEl.classList.add('active');
   tabEl.setAttribute('aria-selected', 'true');
-
-  // Hide sibling copy blocks and show target
-  const blocks = ['path-mac', 'path-win'];
-  blocks.forEach(id => {
+  ['path-mac', 'path-win'].forEach(id => {
     const el = document.getElementById(id);
     if (el) el.style.display = (id === showId) ? 'flex' : 'none';
   });
@@ -471,6 +657,284 @@ function feedback(btn, original) {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
   }, { threshold: 0.1, rootMargin: '0px 0px -32px 0px' });
   document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+})();
+
+// ── Carousel (smooth rAF loop — auto-rotate + snap + zoom) ────────
+(function () {
+  var TOTAL  = 6;
+  var STEP   = 360 / TOTAL;   // 60° per device
+  var AUTO   = 0.04;          // degrees/frame when idle (slow, calm rotation)
+
+  var rot       = 0;          // current visual rotation (degrees, grows freely)
+  var targetRot = 0;          // lerp target
+  var zoomed    = false;
+  var idle      = true;       // true = auto-rotate
+  var hovering  = false;      // true while pointer is over the carousel stage
+  var idleTimer = null;
+  var tiltRaf   = null;
+  var activeIdx = 0;
+
+  var track   = document.getElementById('carousel-track');
+  var counter = document.getElementById('carousel-counter');
+  var backBtn = document.getElementById('zoom-back');
+  var dots    = Array.prototype.slice.call(document.querySelectorAll('.carousel-dot-btn'));
+  var devices = track ? Array.prototype.slice.call(track.querySelectorAll('.device')) : [];
+
+  if (!track || devices.length === 0) return;
+
+  // ── Per-frame update ──────────────────────────────────────────
+  function frame() {
+    if (!zoomed) {
+      // Smooth lerp toward target, then auto-rotate when at rest
+      var diff = targetRot - rot;
+      if (Math.abs(diff) > 0.05) {
+        rot += diff * 0.09;
+      } else {
+        rot = targetRot;
+        if (idle && !hovering) {
+          rot      += AUTO;
+          targetRot = rot;
+        }
+      }
+
+      // Drive the CSS cylinder rotation
+      track.style.setProperty('--rotation', rot + 'deg');
+
+      // Per-device opacity + filter (smooth, JS-driven — desktop only)
+      var mobile = window.innerWidth < 768;
+      for (var i = 0; i < devices.length; i++) {
+        var worldAngle = ((i * STEP + rot) % 360 + 360) % 360;
+        var mirror     = worldAngle > 180 ? 360 - worldAngle : worldAngle; // 0=front 180=back
+
+        if (!mobile) {
+          var opacity   = Math.max(0, 1 - mirror / 110);
+          var blurPx    = mirror > 80 ? ((mirror - 80) / 80) * 4 : 0;
+          var hidden    = mirror > 155;
+          var clickable = mirror < 70;
+          devices[i].style.opacity       = hidden ? '0' : String(+opacity.toFixed(3));
+          devices[i].style.filter        = blurPx > 0 ? 'blur(' + blurPx.toFixed(1) + 'px)' : 'none';
+          devices[i].style.pointerEvents = clickable ? 'all' : 'none';
+        } else {
+          // Mobile: CSS controls layout; clear any stale inline styles
+          devices[i].style.opacity       = '';
+          devices[i].style.filter        = '';
+          devices[i].style.pointerEvents = '';
+        }
+
+        // data-offset for z-index CSS rule
+        var sign  = worldAngle > 180 ? -1 : 1;
+        var steps = Math.round(mirror / STEP);
+        devices[i].setAttribute('data-offset', steps === 0 ? '0' : String(steps * sign));
+      }
+
+      // Sync active index to whichever device is nearest the front
+      var newActive = (Math.round(-rot / STEP) % TOTAL + TOTAL) % TOTAL;
+      if (newActive !== activeIdx) {
+        activeIdx = newActive;
+        syncNav();
+      }
+    }
+    requestAnimationFrame(frame);
+  }
+
+  function syncNav() {
+    for (var i = 0; i < dots.length; i++) {
+      var on = i === activeIdx;
+      dots[i].classList.toggle('active', on);
+      dots[i].setAttribute('aria-selected', on ? 'true' : 'false');
+    }
+    if (counter) {
+      var n = String(activeIdx + 1).padStart ? String(activeIdx + 1).padStart(2, '0') : (activeIdx < 9 ? '0' + (activeIdx + 1) : String(activeIdx + 1));
+      counter.textContent = n + ' / 06';
+    }
+  }
+
+  // ── Snap to device n (shortest arc) ──────────────────────────
+  function snapTo(n) {
+    n = ((n % TOTAL) + TOTAL) % TOTAL;
+    var canonical = -n * STEP;
+    var rawDiff   = ((canonical - rot) % 360 + 360) % 360;
+    var adj       = rawDiff > 180 ? rawDiff - 360 : rawDiff;
+    targetRot     = rot + adj;
+    activeIdx     = n;
+    idle          = false;
+    clearTimeout(idleTimer);
+    idleTimer = setTimeout(function () { idle = true; }, 4000);
+    syncNav();
+  }
+
+  function cycle(dir) { snapTo(activeIdx + dir); }
+
+  // ── Zoom in / out ─────────────────────────────────────────────
+  // NOTE: position:fixed fails inside preserve-3d transform contexts.
+  // Fix: physically move the device to <body> on open, restore on close.
+  var zoomedDevice    = null;
+  var zoomPlaceholder = null;
+
+  function openZoom() {
+    if (zoomed) return;
+    var dev = devices[activeIdx];
+    if (!dev) return;
+    zoomed       = true;
+    idle         = false;
+    targetRot    = rot; // prevent post-zoom rotation jump
+    clearTimeout(idleTimer);
+    zoomedDevice = dev;
+
+    // Insert a placeholder comment to remember the slot
+    zoomPlaceholder = document.createComment('zoom-slot');
+    zoomedDevice.parentNode.insertBefore(zoomPlaceholder, zoomedDevice);
+
+    // Move out of the 3D context so position:fixed covers the full viewport
+    document.body.appendChild(zoomedDevice);
+    // Reset inline styles set by the rAF loop so CSS takes over
+    zoomedDevice.style.opacity       = '';
+    zoomedDevice.style.filter        = '';
+    zoomedDevice.style.pointerEvents = '';
+    zoomedDevice.classList.add('device--focused');
+    document.body.classList.add('zoom-active');
+
+    if (backBtn) {
+      backBtn.style.display = 'flex';
+      setTimeout(function () { backBtn.focus(); }, 80);
+    }
+  }
+
+  function closeZoom() {
+    zoomed    = false;
+    targetRot = rot; // re-sync so next snapTo doesn't jump
+    if (zoomedDevice) {
+      zoomedDevice.classList.remove('device--focused');
+      // Restore to its original slot in the carousel track
+      if (zoomPlaceholder && zoomPlaceholder.parentNode) {
+        zoomPlaceholder.parentNode.insertBefore(zoomedDevice, zoomPlaceholder);
+        zoomPlaceholder.parentNode.removeChild(zoomPlaceholder);
+      }
+      zoomPlaceholder = null;
+      var restored = zoomedDevice;
+      zoomedDevice  = null;
+      setTimeout(function () { if (restored) restored.focus(); }, 50);
+    }
+    document.body.classList.remove('zoom-active');
+    if (backBtn) backBtn.style.display = 'none';
+    clearTimeout(idleTimer);
+    idleTimer = setTimeout(function () { idle = true; }, 2500);
+  }
+
+  function handleDeviceClick(idx) {
+    if (zoomed) return;
+    if (idx === activeIdx) {
+      openZoom();
+    } else {
+      snapTo(idx);
+    }
+  }
+
+  // Expose to inline onclick attributes
+  window.setActive          = snapTo;
+  window.cycle              = cycle;
+  window.handleDeviceClick  = handleDeviceClick;
+  window.closeZoom          = closeZoom;
+
+  if (backBtn) backBtn.addEventListener('click', closeZoom);
+
+  // ── Hover-pause (desktop only) ────────────────────────────────
+  var stage = document.querySelector('.carousel-stage');
+  if (stage) {
+    stage.addEventListener('mouseenter', function () {
+      if (window.innerWidth < 768) return;
+      hovering = true;
+      idle = false;
+    });
+    stage.addEventListener('mouseleave', function () {
+      if (window.innerWidth < 768) return;
+      hovering = false;
+      clearTimeout(idleTimer);
+      idleTimer = setTimeout(function () { idle = true; }, 800);
+    });
+  }
+
+  document.addEventListener('keydown', function (e) {
+    if (zoomed) {
+      if (e.key === 'Escape') { closeZoom(); return; }
+      // Focus trap — cycle Tab/Shift+Tab within the focused device
+      if (e.key === 'Tab' && zoomedDevice) {
+        var sel = 'a[href], button:not([disabled]), input, select, textarea, [tabindex]:not([tabindex="-1"])';
+        var focusable = Array.prototype.slice.call(zoomedDevice.querySelectorAll(sel)).filter(function (el) {
+          return el.offsetParent !== null;
+        });
+        if (focusable.length === 0) { e.preventDefault(); return; }
+        var first = focusable[0];
+        var last  = focusable[focusable.length - 1];
+        if (e.shiftKey) {
+          if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+        } else {
+          if (document.activeElement === last) { e.preventDefault(); first.focus(); }
+        }
+      }
+      return;
+    }
+    if (e.key === 'ArrowLeft')  cycle(-1);
+    if (e.key === 'ArrowRight') cycle(1);
+  });
+
+  // ── Scroll tilt (passive — never blocks scroll) ───────────────
+  var section = document.getElementById('tour');
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (section && !reduced) {
+    var inView = false;
+    new IntersectionObserver(function (entries) {
+      inView = entries[0].isIntersecting;
+      if (!inView) track.style.setProperty('--tilt', '0deg');
+    }, { threshold: 0 }).observe(section);
+
+    document.addEventListener('scroll', function () {
+      if (!inView || zoomed || tiltRaf) return;
+      tiltRaf = requestAnimationFrame(function () {
+        tiltRaf = null;
+        var r = section.getBoundingClientRect();
+        var p = (window.innerHeight / 2 - r.top - r.height / 2) / window.innerHeight;
+        track.style.setProperty('--tilt', Math.max(-5, Math.min(5, p * 7)) + 'deg');
+      });
+    }, { passive: true });
+  }
+
+  // ── Boot ──────────────────────────────────────────────────────
+  track.style.setProperty('--tilt', '0deg');
+  syncNav();
+  requestAnimationFrame(frame);
+})();
+
+// ── Hero video — fade overlay text once video plays ───────────────
+(function () {
+  var video   = document.querySelector('.hero-video');
+  var overlay = document.getElementById('hero-overlay');
+  if (!video || !overlay) return;
+
+  // Respect reduced-motion: skip autoplay, keep text visible always
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    video.removeAttribute('autoplay');
+    return;
+  }
+
+  var fadeTimer = null;
+  video.addEventListener('playing', function () {
+    clearTimeout(fadeTimer);
+    fadeTimer = setTimeout(function () {
+      overlay.classList.add('hero-text-overlay--fade');
+    }, 250);
+  });
+
+  // If autoplay is blocked (mobile, power-save), keep text visible
+  video.addEventListener('pause', function () {
+    clearTimeout(fadeTimer);
+    overlay.classList.remove('hero-text-overlay--fade');
+  });
+
+  // Safety: if playing event never fires in 1.5s, ensure text stays visible
+  setTimeout(function () {
+    if (video.paused) overlay.classList.remove('hero-text-overlay--fade');
+  }, 1500);
 })();
 </script>
 
