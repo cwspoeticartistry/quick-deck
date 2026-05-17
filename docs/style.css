@@ -1276,6 +1276,7 @@ body.menu-open { overflow: hidden; }
   .gallery-hero h1 { font-size: 36px; }
 
   .carousel-section { border-top-left-radius: 0; border-top-right-radius: 0; box-shadow: none; }
+  .bonus-skills { border-top-left-radius: 0; border-top-right-radius: 0; box-shadow: none; }
 }
 
 @media (max-width: 479px) {
@@ -1292,13 +1293,17 @@ body.menu-open { overflow: hidden; }
   .card-detail { padding: 24px; }
 }
 
-/* ── Bonus skills section ────────────────────────────────────────── */
+/* ── Bonus skills section — slides over sticky carousel ─────────── */
 .bonus-skills {
   position: relative;
-  z-index: 2;      /* must sit above the sticky hero (z-index: 1) */
+  z-index: 3;           /* above carousel-wrap (z-index: 2) */
   background: var(--bg);
   padding: 80px 0;
   border-bottom: 1px solid var(--rule);
+  margin-top: -60vh;    /* pull up to slide over the sticky carousel */
+  border-top-left-radius: 32px;
+  border-top-right-radius: 32px;
+  box-shadow: 0 -24px 60px -20px rgba(0,0,0,0.25);
 }
 
 .bonus-grid {
@@ -1464,11 +1469,20 @@ body.menu-open { overflow: hidden; }
   background: var(--bg);
 }
 
-/* ── Carousel section — slides over sticky hero ───────────────────── */
-.carousel-section {
+/* ── Carousel wrap — sticky scroll space; bonus-skills slides over it */
+.carousel-wrap {
   position: relative;
   z-index: 2;
-  margin-top: -100vh; /* pull carousel up so it slides over the sticky hero immediately */
+  margin-top: -100vh;   /* same overlap with hero as before */
+  background: var(--bg);
+  padding-bottom: 60vh; /* extra scroll room so bonus-skills can slide over */
+}
+
+/* ── Carousel section — slides over sticky hero, then itself sticks ── */
+.carousel-section {
+  position: sticky;
+  top: 64px;            /* stick below nav */
+  z-index: 2;
   padding: 80px 0 56px;
   border-bottom: 1px solid var(--rule);
   overflow: hidden;
@@ -1876,6 +1890,8 @@ body.zoom-active { overflow: hidden; }
   .hero-text-overlay--fade { opacity: 1 !important; pointer-events: auto !important; }
   .hero-video { display: none !important; }
   .hero-scrim { display: none !important; }
-  .carousel-section { border-top-left-radius: 0 !important; border-top-right-radius: 0 !important; box-shadow: none !important; }
+  .carousel-wrap { margin-top: 0 !important; padding-bottom: 0 !important; }
+  .carousel-section { position: relative !important; top: auto !important; border-top-left-radius: 0 !important; border-top-right-radius: 0 !important; box-shadow: none !important; }
+  .bonus-skills { margin-top: 0 !important; border-top-left-radius: 0 !important; border-top-right-radius: 0 !important; box-shadow: none !important; }
   .carousel-dot-btn.active { animation: none !important; }
 }
