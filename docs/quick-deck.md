@@ -1,8 +1,9 @@
 ---
 name: quick-deck
 description: Build beautiful, brand-on HTML presentations from scratch, redesign existing ones, or recreate a reference style. Invoked by "use quick-deck", "build me a presentation", "create a deck", "make slides", or when this file is attached to a Claude conversation.
-version: 1.0.0
+version: 1.1.0
 attribution: Design principles adapted verbatim from Jack Roberts' power-design (MIT, https://github.com/ItsssssJack/power-design)
+bundle: deck-from-pdf + deck-from-url included
 styles_gallery: https://cwspoeticartistry.github.io/quick-deck/styles.html
 ---
 
@@ -20,6 +21,8 @@ Activate on any of:
 - `create a deck`
 - `make slides`
 - `build me a deck`
+- `deck from pdf` / `turn this pdf into a deck`
+- `deck from url` / `turn this link into a deck` / `build a deck from this article`
 - File attachment: say "follow the instructions in the attached file"
 
 ---
@@ -39,12 +42,26 @@ When invoked, say exactly this (adapt tone naturally):
 - I have an **existing presentation** I want to redesign or update
 - I have an **example presentation** I want recreated in my own style
 - I want to build something **new from scratch** — I'll describe what I need
+- I have a **PDF** I want turned into a deck — I'll attach it or give the file path
+- I have a **URL** (article, page, or document) I want turned into a deck — I'll paste the link
 
 *(Reply with the option that fits, or just describe your situation.)*
 
 ---
 
-After Q1 is answered, ask Q2:
+After Q1 is answered:
+
+**If the user chose PDF:**
+Reply: *"Great — please attach the PDF to this conversation. (In Claude Code, you can also paste the file path.) Once I've read it, I'll ask about style."*
+Wait for the PDF. Then read it, extract the core content silently (key sections, headings, data, conclusions), and continue to Q2.
+
+**If the user chose URL:**
+Reply: *"Perfect — please paste the URL. I'll fetch the page and pull out the key content, then ask about style."*
+Wait for the URL. Then fetch and read it silently, extract key content, and continue to Q2.
+
+---
+
+After source intake (or immediately after Q1 for other modes), ask Q2:
 
 ---
 
@@ -84,15 +101,21 @@ Run this silently after Q3. Do not narrate every micro-step — produce the deli
 Parse intake into a mental `deck.json`:
 
 ```
-deck_id:     kebab-case slug from topic  (e.g. "acme-q3-review")
-type:        new | redesign | recreate
-purpose:     inferred from Q1
-audience:    inferred or ask if critical
-brand:       extracted from Q2 (colors, fonts, voice)
-style_name:  matched or derived
-assets:      from Q3
-prior_deck:  content + structure from Q3 (if redesigning/recreating)
+deck_id:        kebab-case slug from topic  (e.g. "acme-q3-review")
+type:           new | redesign | recreate | from-pdf | from-url
+purpose:        inferred from Q1
+audience:       inferred or ask if critical
+brand:          extracted from Q2 (colors, fonts, voice)
+style_name:     matched or derived
+assets:         from Q3
+prior_deck:     content + structure from Q3 (if redesigning/recreating)
+source_content: extracted text, headings, and key points (if type is from-pdf or from-url)
+source_ref:     file path or URL (if type is from-pdf or from-url)
 ```
+
+**For from-pdf:** Read the attached PDF or file. Extract: title, section headings, key points per section, any data or statistics, conclusions. Use this as the raw content for the outline — treat it as the "existing content" the deck should represent. Do not invent content; only restructure and distil what is in the document.
+
+**For from-url:** Fetch the URL. Extract: page title, main headings, key paragraphs, data, and conclusions. Ignore nav, ads, and footers. Use this as the raw content for the outline. Do not invent content beyond what the page contains.
 
 Create folder `./decks/<deck_id>/` with:
 - `deck.json` — full schema above
@@ -465,10 +488,12 @@ If the user describes in words: map to nearest entry or interpolate.
 ## What This Skill Does NOT Do
 
 - Generate images (uses user-supplied URLs or CSS-only visuals)
-- Connect to external APIs or read credentials
+- Connect to third-party APIs or use your API keys
 - Create PPTX files (HTML + browser Print-to-PDF is the output)
 - Auto-publish to the web
+- Invent content — from-pdf and from-url modes only distil what is in the source, never fabricate
 
 ---
 
-*quick-deck v1.0 | https://cwspoeticartistry.github.io/quick-deck/ | MIT | Credits: Jack Roberts (power-design)*
+*quick-deck v1.1 | https://cwspoeticartistry.github.io/quick-deck/ | MIT | Credits: Jack Roberts (power-design)*
+*Bundled: deck-from-pdf + deck-from-url (no extra keys required)*
