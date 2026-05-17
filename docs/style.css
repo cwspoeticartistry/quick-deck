@@ -1296,11 +1296,11 @@ body.menu-open { overflow: hidden; }
 /* ── Bonus skills section — slides over sticky carousel ─────────── */
 .bonus-skills {
   position: relative;
-  z-index: 3;           /* above carousel-wrap (z-index: 2) */
+  z-index: 3;            /* above carousel-wrap (z-index: 2) */
   background: var(--bg);
   padding: 80px 0;
   border-bottom: 1px solid var(--rule);
-  margin-top: -60vh;    /* pull up to slide over the sticky carousel */
+  margin-top: -100vh;   /* pull up by a full viewport so it rises over the carousel */
   border-top-left-radius: 32px;
   border-top-right-radius: 32px;
   box-shadow: 0 -24px 60px -20px rgba(0,0,0,0.25);
@@ -1470,22 +1470,24 @@ body.menu-open { overflow: hidden; }
 }
 
 /* ── Carousel wrap — sticky scroll space; bonus-skills slides over it */
+/* NOTE: no z-index here — a stacking context on the parent traps sticky children.
+   NOTE: negative margin-top breaks CSS position:sticky in Chromium; JS handles pinning instead. */
 .carousel-wrap {
   position: relative;
-  z-index: 2;
-  margin-top: -100vh;   /* same overlap with hero as before */
+  margin-top: -100vh;    /* same overlap with hero as before */
   background: var(--bg);
-  padding-bottom: 60vh; /* extra scroll room so bonus-skills can slide over */
+  padding-bottom: 100vh; /* carousel sticks for a full viewport-height while bonus rises */
 }
 
-/* ── Carousel section — slides over sticky hero, then itself sticks ── */
+/* ── Carousel section — slides over hero, then pinned by JS scroll handler ── */
+/* CSS sticky is NOT used here because Chromium breaks sticky inside negative-margin ancestors.
+   Pinning is simulated via transform:translateY() in the scroll handler (index.html). */
 .carousel-section {
-  position: sticky;
-  top: 64px;            /* stick below nav */
+  position: relative;   /* JS will apply transform to simulate sticky */
   z-index: 2;
   padding: 80px 0 56px;
   border-bottom: 1px solid var(--rule);
-  overflow: hidden;
+  clip-path: inset(0);  /* clip 3D overflow without BFC */
   border-top-left-radius: 32px;
   border-top-right-radius: 32px;
   box-shadow: 0 -24px 60px -20px rgba(0,0,0,0.25);
@@ -1890,8 +1892,8 @@ body.zoom-active { overflow: hidden; }
   .hero-text-overlay--fade { opacity: 1 !important; pointer-events: auto !important; }
   .hero-video { display: none !important; }
   .hero-scrim { display: none !important; }
-  .carousel-wrap { margin-top: 0 !important; padding-bottom: 0 !important; }
-  .carousel-section { position: relative !important; top: auto !important; border-top-left-radius: 0 !important; border-top-right-radius: 0 !important; box-shadow: none !important; }
+  .carousel-wrap { margin-top: 0 !important; padding-bottom: 0 !important; background: transparent !important; }
+  .carousel-section { transform: none !important; border-top-left-radius: 0 !important; border-top-right-radius: 0 !important; box-shadow: none !important; }
   .bonus-skills { margin-top: 0 !important; border-top-left-radius: 0 !important; border-top-right-radius: 0 !important; box-shadow: none !important; }
   .carousel-dot-btn.active { animation: none !important; }
 }

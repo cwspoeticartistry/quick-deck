@@ -91,8 +91,8 @@
 <div class="carousel-wrap">
 
 <!-- ── Carousel section ───────────────────────────────────────────── -->
-<section class="carousel-section fade-in" id="tour" aria-labelledby="carousel-heading">
-  <div class="container">
+<section class="carousel-section" id="tour" aria-labelledby="carousel-heading">
+  <div class="container fade-in">
     <div class="section-label">Take a tour</div>
     <h2 class="section-heading" id="carousel-heading">Five screens. One workflow.</h2>
     <p class="section-sub">Click any screen to explore it full size — all interactions still work inside.</p>
@@ -1015,6 +1015,42 @@ function feedback(btn, original) {
       playBtnMobile.classList.add('hidden');
       startVideo();
     });
+  }
+})();
+
+/* ── Carousel JS-sticky (CSS sticky broken by negative-margin parent in Chromium) ── */
+(function() {
+  var cs = document.querySelector('.carousel-section');
+  if (!cs) return;
+
+  var stickyStart = 0;
+  var stickyWindow = 0;
+  var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function init() {
+    cs.style.transform = '';
+    var scrollY = window.scrollY;
+    var navH = document.querySelector('nav') ? document.querySelector('nav').offsetHeight : 64;
+    var rect = cs.getBoundingClientRect();
+    stickyStart = rect.top + scrollY - navH;
+    stickyWindow = window.innerHeight;
+    update();
+  }
+
+  function update() {
+    if (reducedMotion) return;
+    var scrollY = window.scrollY;
+    var offset = Math.max(0, Math.min(scrollY - stickyStart, stickyWindow));
+    cs.style.transform = offset > 0 ? ('translateY(' + offset + 'px)') : '';
+  }
+
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', init);
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
   }
 })();
 </script>
