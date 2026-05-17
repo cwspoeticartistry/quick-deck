@@ -1023,6 +1023,7 @@ function feedback(btn, original) {
   var cs = document.querySelector('.carousel-section');
   if (!cs) return;
 
+  var bonus = document.querySelector('.bonus-skills');
   var stickyStart = 0;
   var stickyWindow = 0;
   var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -1042,6 +1043,12 @@ function feedback(btn, original) {
     var scrollY = window.scrollY;
     var offset = Math.max(0, Math.min(scrollY - stickyStart, stickyWindow));
     cs.style.transform = offset > 0 ? ('translateY(' + offset + 'px)') : '';
+    // Pre-reveal bonus-skills as soon as carousel starts pinning — the slide-over
+    // IS the entrance animation; letting the fade-in trigger mid-scroll causes
+    // the section to appear partially transparent (visually "faded") on mobile.
+    if (offset > 0 && bonus && !bonus.classList.contains('visible')) {
+      bonus.classList.add('visible');
+    }
   }
 
   window.addEventListener('scroll', update, { passive: true });
